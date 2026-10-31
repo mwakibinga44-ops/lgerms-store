@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="sw">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#0d1b2a" />
+    <!-- The link is unguessable, but a search engine must still not index a customer's repair status. -->
+    <meta name="robots" content="noindex, nofollow" />
+    <title>LubhaTech | Fuatilia urekebishaji</title>
+    <meta
+      name="description"
+      content="Angalia hali ya urekebishaji wa kifaa chako karakani kwa kutumia kiungo au nambari uliyopewa."
+    />
+    <link rel="stylesheet" href="./styles.css" />
+    <link rel="icon" href="./assets/logo.png" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="brand">
+        <span class="brand-logo" id="brandLogo" aria-hidden="true">
+          <img src="./assets/logo.png" alt="" onerror="this.closest('.brand-logo').dataset.failed='1'" />
+          <span class="brand-logo-text" aria-hidden="true">LT</span>
+        </span>
+        <span class="brand-word">
+          <span class="brand-wordmark">LGERMS</span>
+          <span class="brand-shop" id="shopName">LubhaTech</span>
+          <span class="brand-addr" id="shopAddress"></span>
+        </span>
+      </div>
+      <div class="lang-switch" role="group" aria-label="Lugha / Language">
+        <button type="button" class="lang-btn" data-lang="sw" id="langSw">SW</button>
+        <button type="button" class="lang-btn" data-lang="en" id="langEn">EN</button>
+      </div>
+    </header>
+
+    <main class="track-wrap">
+      <p class="freshness" id="freshness" role="status" hidden></p>
+
+      <div class="track-head">
+        <h1 class="card-name" id="trackTitle">Fuatilia urekebishaji</h1>
+        <p class="track-ref" id="trackRef"></p>
+      </div>
+
+      <!-- Shown when the address carries no usable code. The code is only ever used to name one file. -->
+      <form class="track-form" id="trackForm" hidden>
+        <div class="track-field">
+          <label for="trackCode" data-i18n="pasteLabel">Kiungo au nambari ya kufuatilia</label>
+          <input
+            id="trackCode"
+            name="code"
+            type="text"
+            autocomplete="off"
+            spellcheck="false"
+            data-i18n-ph="pastePlaceholder"
+          />
+          <p class="track-hint" data-i18n="pasteHint"></p>
+          <p class="track-error" id="codeError" role="alert" hidden></p>
+        </div>
+        <button type="submit" class="btn btn-request" data-i18n="pasteBtn">Fungua</button>
+      </form>
+
+      <div id="trackBody"></div>
+
+      <p class="track-back"><a href="./index.html" data-i18n="backToShop">Rudi kwenye duka</a></p>
+    </main>
+
+    <footer class="site-footer">
+      <p data-i18n="trackFooter">
+        Habari hizi ni nakili kutoka karakani na husasishwa mara kwa mara — thibitisha mabadiliko makubwa na kaunta.
+      </p>
+    </footer>
+
+    <script src="./track.js"></script>
+  </body>
+</html>

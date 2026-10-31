@@ -49,10 +49,14 @@
           <button type="button" class="filter-btn is-active" data-filter="all" data-i18n="filterAll">Zote</button>
           <button type="button" class="filter-btn" data-filter="items" data-i18n="filterItems">Vipuri</button>
           <button type="button" class="filter-btn" data-filter="handouts" data-i18n="filterHandouts">Nyaraka</button>
+          <button type="button" class="filter-btn" data-filter="courses" data-i18n="filterCourses">Kozi</button>
         </div>
       </div>
 
       <div id="catalog" class="catalog"></div>
+
+      <!-- Course cards live here so the Kozi filter can hide the parts and handouts above. -->
+      <div id="coursesSection" class="courses-section" hidden></div>
 
       <div id="status" class="status" role="status" aria-live="polite"></div>
     </main>
@@ -75,6 +79,9 @@
     <footer class="site-footer">
       <p data-i18n="footerNote">
         Ombi hufungua WhatsApp; malipo na nakala za nyaraka huchukuliwa kwenye kaunta.
+      </p>
+      <p class="footer-track">
+        <a href="./track.html" data-i18n="trackLink">Fuatilia kazi yako</a>
       </p>
     </footer>
 

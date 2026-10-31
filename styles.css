@@ -592,6 +592,213 @@ a {
   text-align: center;
 }
 
+.footer-track {
+  margin: 8px 0 0;
+  font-size: 0.9rem;
+}
+
+/* ---------- Courses ---------- */
+.card-meta {
+  color: var(--muted);
+  font-size: 0.84rem;
+  margin: 0;
+}
+
+.card-note {
+  color: var(--warn);
+  font-size: 0.82rem;
+  margin: 0;
+}
+
+/* ---------- Repair tracking (track.html) ---------- */
+.track-wrap {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: clamp(16px, 3vw, 28px) clamp(16px, 4vw, 40px) 40px;
+}
+
+.track-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 14px;
+}
+
+.track-ref {
+  margin: 0;
+  font-size: 0.85rem;
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.track-state {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-left: 6px solid var(--brand);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 16px;
+}
+
+.track-state-label {
+  margin: 0;
+  font-size: 1.35rem;
+  line-height: 1.2;
+  color: var(--navy);
+}
+
+.track-state-when {
+  margin: 6px 0 0;
+  font-size: 0.84rem;
+  color: var(--muted);
+}
+
+.track-state.is-done {
+  border-left-color: var(--ok);
+}
+
+.track-state.is-blocked {
+  border-left-color: var(--danger);
+}
+
+.estimate {
+  margin-top: 14px;
+  background: #eaf5f2;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 14px 16px;
+}
+
+.estimate-label {
+  margin: 0;
+  font-size: 0.84rem;
+  color: var(--muted);
+}
+
+.estimate-total {
+  margin: 2px 0 0;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--brand-strong);
+  font-variant-numeric: tabular-nums;
+}
+
+.estimate-note {
+  margin: 6px 0 0;
+  font-size: 0.78rem;
+  color: var(--warn);
+}
+
+.timeline {
+  list-style: none;
+  margin: 14px 0 0;
+  padding: 0;
+}
+
+.tl-step {
+  position: relative;
+  padding: 0 0 16px 22px;
+  border-left: 2px solid var(--line);
+}
+
+.tl-step:last-child {
+  border-left-color: transparent;
+  padding-bottom: 0;
+}
+
+.tl-dot {
+  position: absolute;
+  left: -7px;
+  top: 3px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--brand);
+  border: 2px solid var(--paper);
+}
+
+.tl-step.is-first .tl-dot {
+  background: var(--accent);
+}
+
+.tl-state {
+  margin: 0;
+  font-weight: 700;
+  font-size: 0.95rem;
+}
+
+.tl-when {
+  margin: 1px 0 0;
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+.track-card {
+  margin-top: 14px;
+}
+
+.track-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-top: 16px;
+}
+
+.track-form {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 16px;
+  box-shadow: var(--shadow);
+}
+
+/* display:flex above would otherwise beat the hidden attribute and leave the box on screen. */
+.track-form[hidden] {
+  display: none;
+}
+
+.track-field {
+  flex: 1 1 240px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.track-field label {
+  font-size: 0.82rem;
+  color: var(--muted);
+}
+
+.track-field input {
+  padding: 11px 14px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--panel);
+}
+
+.track-hint {
+  color: var(--muted);
+  font-size: 0.84rem;
+}
+
+.track-error {
+  color: var(--danger);
+  font-weight: 600;
+}
+
+.track-back {
+  display: inline-block;
+  margin-top: 18px;
+  font-size: 0.88rem;
+}
+
 /* ---------- Responsive: 2 then 3 columns ---------- */
 @media (min-width: 640px) {
   .grid {

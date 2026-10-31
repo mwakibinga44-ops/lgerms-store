@@ -12,13 +12,36 @@ counter" instead of a figure.
 A customer ticks what they want and taps **Omba / Request**, which opens WhatsApp
 with the list already written out. If no WhatsApp number is published the button
 becomes a phone call, and if neither is published the page says to ask at the
-counter.
+counter. The same window lists the **kozi** the workshop is running — the course
+fee, when it starts, where, how long and how many seats are left — and a card ends
+in *Omba kujisajili*, which writes the session code into the message for you.
+Registering a trainee is still done by staff at the counter.
 
 There is **no** server, no cart, no online payment and no order form here. Nothing
 is uploaded from this page: it only reads `catalog.json` sitting next to it.
 Payment details, when the workshop publishes them, are printed as instructions
 only — the order and the money are confirmed at the counter, the way they always
 have.
+
+## Fuatilia kazi yako — `track.html`
+
+When a device is taken in, the slip now carries a second link:
+`track.html?t=<code>`, where `<code>` is a random code written on that one job and
+nowhere else. Opening it shows what the workshop is willing to tell a customer —
+the state of the job and its Swahili/English names, the date it was received, the
+steps recorded since, the device by model rather than by owner, and the estimate
+the workshop issued (with a plain sentence saying an unapproved estimate can still
+move). It does **not** show the customer's name or phone number, the serial or
+IMEI, the fault as it was dictated, staff notes, or any bill balance.
+
+Each job is published as its own file, `track/<code>.json`. There is no list of
+them and nothing to browse: the code in your link opens your job and no other, and
+the page refuses to display a file whose code is not the one its address asked for.
+A job leaves the window when it is cancelled, judged unrepairable, or delivered
+more than two weeks ago — and its file is removed on the next push.
+
+If you were given the code on paper rather than a link, open `track.html` and paste
+the code in.
 
 ## catalog.json is written by the workshop
 
@@ -45,9 +68,13 @@ npx --yes serve -l 8123 .
 
 - `index.html` — page shell; starts in Kiswahili.
 - `styles.css` — mobile-first card grid, one → two → three columns.
-- `app.js` — reads `./catalog.json`, renders parts and handouts, handles search,
-  filters, quantities, the Kiswahili/English switch and the "prices updated at"
-  notice. Tick marks and the chosen language are remembered on your own device
-  only; nothing is sent anywhere until you tap the button.
+- `app.js` — reads `./catalog.json`, renders parts, handouts and the courses that
+  are still open for registration, handles search, filters, quantities, the
+  Kiswahili/English switch and the "prices updated at" notice. Tick marks and the
+  chosen language are remembered on your own device only; nothing is sent anywhere
+  until you tap the button.
+- `track.html`, `track.js` — the customer's own page, opened by the code on their
+  slip. It reads one file, `track/<code>.json`, and asks for the code by hand if no
+  link was given. Marked `noindex` and excluded in `robots.txt`.
 - `assets/logo.png` — the shop mark, with a text fallback if it fails to load.
 - `.nojekyll`, `robots.txt` — static-hosting files.

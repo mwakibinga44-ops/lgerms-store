@@ -8,47 +8,8 @@
     "bank": "0172020810"
   },
   "currency": "TZS",
-  "generatedAt": "2026-10-31T16:26:31.909Z",
-  "items": [
-    {
-      "id": "01a184b7-ae96-749f-86b9-3c85c8b0ab4b",
-      "sku": "CHG-PORT-TC",
-      "name": "Tecno charging port module",
-      "description": null,
-      "unit": "PCS",
-      "price": "2500",
-      "listPrice": "2500",
-      "priceDate": "2026-10-29T10:21:22.711Z",
-      "available": 13
-    }
-  ],
+  "generatedAt": "2026-10-31T18:55:38.590Z",
+  "items": [],
   "handouts": [],
-  "courses": [
-    {
-      "sessionCode": "PB6887947",
-      "courseCode": "PRB6887947",
-      "nameEn": "Counter probe course",
-      "nameSw": "Kozi ya jaribio la duka",
-      "description": null,
-      "startsAt": "2026-11-01T08:54:59.281Z",
-      "endsAt": "2026-11-03T08:54:59.283Z",
-      "venue": "Room 2",
-      "durationHours": null,
-      "fee": "60000",
-      "seatsLeft": 11
-    },
-    {
-      "sessionCode": "PB7045646",
-      "courseCode": "PRB7045646",
-      "nameEn": "Counter probe course",
-      "nameSw": "Kozi ya jaribio la duka",
-      "description": null,
-      "startsAt": "2026-11-01T08:57:34.300Z",
-      "endsAt": "2026-11-03T08:57:34.301Z",
-      "venue": "Room 2",
-      "durationHours": null,
-      "fee": "60000",
-      "seatsLeft": 11
-    }
-  ]
+  "courses": []
 }

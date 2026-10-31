@@ -32,6 +32,20 @@
     filterHandouts: { sw: "Nyaraka", en: "Handouts" },
     itemsTitle: { sw: "Vipuri na bidhaa", en: "Parts & products" },
     handoutsTitle: { sw: "Nyaraka za mafunzo", en: "Learning handouts" },
+    coursesTitle: { sw: "Kozi zinazojiri", en: "Upcoming courses" },
+    filterCourses: { sw: "Kozi", en: "Courses" },
+    seatsLeftOne: { sw: "nafasi imebaki", en: "seat left" },
+    seatsLeftMany: { sw: "nafasi zimebaki", en: "seats left" },
+    courseFee: { sw: "Ada", en: "Fee" },
+    courseVenue: { sw: "Mahali", en: "Venue" },
+    courseDuration: { sw: "Muda", en: "Duration" },
+    courseHours: { sw: "saa", en: "hours" },
+    enrollBtn: { sw: "Omba kujisajili", en: "Request a seat" },
+    enrollHeader: { sw: "Ombi la kujisajili kwa", en: "Course enrolment request for" },
+    enrollSession: { sw: "Jedwali", en: "Session" },
+    enrollName: { sw: "Jina langu:", en: "My name:" },
+    enrollPhone: { sw: "Simu yangu:", en: "My phone:" },
+    trackLink: { sw: "Fuatilia kazi yako", en: "Track your repair" },
     outOfStock: { sw: "Imetoka", en: "Out of stock" },
     inStockOne: { sw: "kimebaki", en: "left" },
     inStock: { sw: "yamebaki", en: "left" },
@@ -90,12 +104,13 @@
     },
   };
 
-  var catalog = { shop: {}, currency: "TZS", generatedAt: null, items: [], handouts: [] };
+  var catalog = { shop: {}, currency: "TZS", generatedAt: null, items: [], handouts: [], courses: [] };
   var lang = loadLang();
   var filter = "all";
   var query = "";
   var draft = loadDraft();
   var index = new Map(); // id -> { kind, data, name, available }
+  var courseMatches = 0; // how many course cards the current filter+search shows
 
   function t(key) {
     var entry = STR[key];
@@ -334,6 +349,119 @@
     return card;
   }
 
+  // ---------- courses ----------
+  // A session carries both spellings of its course name; the page shows whichever matches the chosen language.
+  function courseTitle(c) {
+    var sw = c.nameSw || "";
+    var en = c.nameEn || "";
+    return lang === "sw" ? sw || en : en || sw;
+  }
+  function hoursText(raw) {
+    var n = toNumber(raw);
+    if (n === null || n <= 0) return null;
+    return formatNumber(String(Math.round(n))) + " " + t("courseHours");
+  }
+  function seatsText(n) {
+    return n + " " + (n === 1 ? t("seatsLeftOne") : t("seatsLeftMany"));
+  }
+
+  // The customer asks for a seat; typing the enrolment into the system stays with staff at the counter.
+  function courseMessage(c) {
+    var lines = [];
+    lines.push(t("enrollHeader") + " " + courseTitle(c));
+    if (c.sessionCode) lines.push(t("enrollSession") + ": " + c.sessionCode);
+    var when = humanDate(c.startsAt);
+    if (when) lines.push(t("startsLabel") + ": " + when);
+    if (c.venue) lines.push(t("courseVenue") + ": " + c.venue);
+    var fee = priceText(c.fee);
+    if (fee) lines.push(t("courseFee") + ": " + fee);
+    var dur = hoursText(c.durationHours);
+    if (dur) lines.push(t("courseDuration") + ": " + dur);
+    lines.push("");
+    lines.push(t("enrollName"));
+    lines.push(t("enrollPhone"));
+    lines.push(t("msgFooter"));
+    return lines.join("\n");
+  }
+
+  function courseCard(c) {
+    var card = el("article", "card course-card");
+    var seats = num(c.seatsLeft);
+
+    var top = el("div", "card-top");
+    top.appendChild(el("h3", "card-name", courseTitle(c) || c.courseCode || c.sessionCode || ""));
+    var fee = priceText(c.fee);
+    top.appendChild(el("span", "price" + (fee ? "" : " ask"), fee || t("askPrice")));
+    card.appendChild(top);
+
+    var subBits = [];
+    if (c.courseCode) subBits.push(c.courseCode);
+    if (c.sessionCode) subBits.push(c.sessionCode);
+    if (subBits.length) card.appendChild(el("p", "card-sub", subBits.join(" · ")));
+    if (c.description) card.appendChild(el("p", "card-desc", c.description));
+
+    var lineBits = [];
+    var start = humanDate(c.startsAt);
+    if (start) lineBits.push(t("startsLabel") + ": " + start);
+    if (c.venue) lineBits.push(t("courseVenue") + ": " + c.venue);
+    var dur = hoursText(c.durationHours);
+    if (dur) lineBits.push(t("courseDuration") + ": " + dur);
+    if (lineBits.length) card.appendChild(el("p", "card-meta", lineBits.join(" · ")));
+
+    var badges = el("div", "badges");
+    badges.appendChild(el("span", "chip " + (seats > 0 ? "stock" : "out"), seatsText(seats)));
+    card.appendChild(badges);
+
+    var row = el("div", "select-row");
+    var msg = courseMessage(c);
+    var wa = whatsappUrl(msg);
+    var tel = telUrl();
+    if (wa || tel) {
+      var a = el("a", "btn btn-request", wa ? t("enrollBtn") : t("viaPhone"));
+      a.href = wa || tel;
+      if (wa) {
+        a.target = "_blank";
+        a.rel = "noopener";
+      }
+      row.appendChild(a);
+    } else {
+      // same rule as the request bar: never a dead link, only the counter note
+      row.appendChild(el("p", "card-note", t("counterNote")));
+    }
+    card.appendChild(row);
+    return card;
+  }
+
+  function renderCourses() {
+    var host = document.getElementById("coursesSection");
+    if (!host) return;
+    host.innerHTML = "";
+    courseMatches = 0;
+
+    var all = Array.isArray(catalog.courses) ? catalog.courses : [];
+    var showing = filter === "all" || filter === "courses";
+    if (!showing) {
+      host.hidden = true;
+      return;
+    }
+    var q = query.trim().toLowerCase();
+    var list = all.filter(function (c) {
+      return matches(c, q, "course");
+    });
+    courseMatches = list.length;
+    if (!list.length) {
+      host.hidden = true;
+      return;
+    }
+    host.hidden = false;
+    host.appendChild(el("h2", "section-title", t("coursesTitle")));
+    var grid = el("div", "grid");
+    list.forEach(function (c) {
+      grid.appendChild(courseCard(c));
+    });
+    host.appendChild(grid);
+  }
+
   // ---------- render catalog ----------
   function renderCatalog() {
     var host = document.getElementById("catalog");
@@ -343,8 +471,9 @@
 
     var items = Array.isArray(catalog.items) ? catalog.items : [];
     var handouts = Array.isArray(catalog.handouts) ? catalog.handouts : [];
+    var courses = Array.isArray(catalog.courses) ? catalog.courses : [];
 
-    if (!items.length && !handouts.length) {
+    if (!items.length && !handouts.length && !courses.length) {
       var empty = el("div", "empty");
       empty.appendChild(el("h2", null, t("emptyTitle")));
       empty.appendChild(el("p", null, t("emptyBody")));
@@ -356,13 +485,11 @@
     var showItems = filter === "all" || filter === "items";
     var showHandouts = filter === "all" || filter === "handouts";
     var renderedAny = false;
-    var matchedAny = false;
 
     if (showItems) {
       var list = items.filter(function (it) {
         return matches(it, q, "item");
       });
-      if (list.length) matchedAny = true;
       if (list.length) {
         host.appendChild(el("h2", "section-title", t("itemsTitle")));
         var grid = el("div", "grid");
@@ -381,7 +508,6 @@
       var hlist = handouts.filter(function (h) {
         return matches(h, q, "handout");
       });
-      if (hlist.length) matchedAny = true;
       if (hlist.length) {
         host.appendChild(el("h2", "section-title", t("handoutsTitle")));
         var hgrid = el("div", "grid");
@@ -396,11 +522,9 @@
       }
     }
 
-    if (!renderedAny) {
-      status.textContent = t("noResults");
-    } else if (matchedAny && q) {
-      status.textContent = "";
-    }
+    // A "Kozi"-only view keeps its cards in #coursesSection, so do not call that "no results".
+    var coursesShown = (filter === "all" || filter === "courses") && courseMatches > 0;
+    status.textContent = !renderedAny && !coursesShown ? t("noResults") : "";
   }
 
   function matches(d, q, kind) {
@@ -408,6 +532,8 @@
     var hay = [];
     if (kind === "item") {
       hay.push(d.name, d.sku, d.description);
+    } else if (kind === "course") {
+      hay.push(d.nameEn, d.nameSw, d.courseCode, d.sessionCode, d.description, d.venue);
     } else {
       hay.push(d.title, d.courseName, d.courseNameSw, d.sessionCode);
     }
@@ -649,6 +775,7 @@
   function renderAll() {
     renderChrome();
     renderFreshness();
+    renderCourses();
     renderCatalog();
     renderBar();
   }
@@ -657,6 +784,7 @@
   function wireEvents() {
     document.getElementById("search").addEventListener("input", function (e) {
       query = e.target.value || "";
+      renderCourses();
       renderCatalog();
     });
 
@@ -664,6 +792,7 @@
       b.addEventListener("click", function () {
         filter = b.getAttribute("data-filter");
         renderChrome();
+        renderCourses();
         renderCatalog();
       });
     });
@@ -725,12 +854,14 @@
         if (!catalog.shop) catalog.shop = {};
         if (!Array.isArray(catalog.items)) catalog.items = [];
         if (!Array.isArray(catalog.handouts)) catalog.handouts = [];
+        if (!Array.isArray(catalog.courses)) catalog.courses = [];
         buildIndex();
         renderAll();
       })
       .catch(function () {
         catalog.items = [];
         catalog.handouts = [];
+        catalog.courses = [];
         buildIndex();
         renderChrome();
         var p = document.getElementById("freshness");
