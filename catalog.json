@@ -1,0 +1,26 @@
+{
+  "shop": {
+    "name": "LubhaTech Main Workshop",
+    "whatsapp": "255757352736",
+    "phone": "",
+    "address": "Barabara ya Nyerere Bomang'ombe, Hai Kilimanjaro",
+    "mpesa": "55965639",
+    "bank": "0172020810"
+  },
+  "currency": "TZS",
+  "generatedAt": "2026-10-31T14:11:37.253Z",
+  "items": [
+    {
+      "id": "01a184b7-ae96-749f-86b9-3c85c8b0ab4b",
+      "sku": "CHG-PORT-TC",
+      "name": "Tecno charging port module",
+      "description": null,
+      "unit": "PCS",
+      "price": "2500",
+      "listPrice": "2500",
+      "priceDate": "2026-10-29T10:21:22.711Z",
+      "available": 13
+    }
+  ],
+  "handouts": []
+}

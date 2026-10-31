@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="sw">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#0d1b2a" />
+    <title>LubhaTech Duka | Bidhaa na Nyaraka</title>
+    <meta
+      name="description"
+      content="Omba vipuri, bidhaa na nyaraka za mafunzo kutoka LubhaTech kupitia WhatsApp. Bei na idadi za stock za kisasa."
+    />
+    <link rel="stylesheet" href="./styles.css" />
+    <link rel="icon" href="./assets/logo.png" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="brand">
+        <span class="brand-logo" id="brandLogo" aria-hidden="true">
+          <img src="./assets/logo.png" alt="" onerror="this.closest('.brand-logo').dataset.failed='1'" />
+          <span class="brand-logo-text" aria-hidden="true">LT</span>
+        </span>
+        <span class="brand-word">
+          <span class="brand-wordmark">LGERMS</span>
+          <span class="brand-shop" id="shopName">LubhaTech</span>
+          <span class="brand-addr" id="shopAddress"></span>
+        </span>
+      </div>
+      <div class="lang-switch" role="group" aria-label="Lugha / Language">
+        <button type="button" class="lang-btn" data-lang="sw" id="langSw">SW</button>
+        <button type="button" class="lang-btn" data-lang="en" id="langEn">EN</button>
+      </div>
+    </header>
+
+    <main class="site-main">
+      <p class="freshness" id="freshness" role="status" hidden></p>
+
+      <div class="controls">
+        <div class="search-field">
+          <label class="sr-only" for="search" data-i18n="searchLabel">Tafuta</label>
+          <input
+            id="search"
+            type="search"
+            autocomplete="off"
+            data-i18n-ph="searchPlaceholder"
+            placeholder="Tafuta jina, SKU au kozi"
+          />
+        </div>
+        <div class="filters" role="group" data-i18n-aria="filterGroupLabel" aria-label="Chuja kundi">
+          <button type="button" class="filter-btn is-active" data-filter="all" data-i18n="filterAll">Zote</button>
+          <button type="button" class="filter-btn" data-filter="items" data-i18n="filterItems">Vipuri</button>
+          <button type="button" class="filter-btn" data-filter="handouts" data-i18n="filterHandouts">Nyaraka</button>
+        </div>
+      </div>
+
+      <div id="catalog" class="catalog"></div>
+
+      <div id="status" class="status" role="status" aria-live="polite"></div>
+    </main>
+
+    <section class="request-bar" id="requestBar" aria-labelledby="requestBarTitle" hidden>
+      <h2 id="requestBarTitle" class="request-bar-title" data-i18n="requestBarTitle">Omba bidhaa</h2>
+      <p class="request-summary" id="requestSummary"></p>
+      <p class="request-note" id="requestNote" hidden></p>
+      <div class="request-actions" id="requestActions"></div>
+    </section>
+
+    <section class="pay-box" id="payBox" aria-labelledby="payTitle" hidden>
+      <h2 id="payTitle" data-i18n="payTitle">Njia za malipo</h2>
+      <ul class="pay-list" id="payList"></ul>
+      <p class="pay-note" data-i18n="payNote">
+        Malipo hayathibitishi ombi — ombi lithibitishwa na wafanyakazi kwenye kaunta.
+      </p>
+    </section>
+
+    <footer class="site-footer">
+      <p data-i18n="footerNote">
+        Ombi hufungua WhatsApp; malipo na nakala za nyaraka huchukuliwa kwenye kaunta.
+      </p>
+    </footer>
+
+    <script src="./app.js"></script>
+  </body>
+</html>
