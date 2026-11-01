@@ -31,7 +31,7 @@
     deliveredLabel: { sw: "Ilikabidhiwa", en: "Handed back" },
     updatedLabel: { sw: "Hali ilisasishwa", en: "Status updated" },
     updatedStale: {
-      sw: " — habari hizi zinaweza kuwa za zamani, thibitisha na kaunta",
+      sw: " — hali hii inaweza kuwa ya zamani, thibitisha kwa mtu wa kaunta",
       en: " — this may be out of date, please confirm with the counter",
     },
     timelineTitle: { sw: "Hatua zilizopita", en: "What has happened" },
@@ -77,16 +77,16 @@
     },
     notFoundTitle: { sw: "Hakuna kazi hiyo", en: "We cannot find that job" },
     notFoundBody: {
-      sw: "Kiungo hiki hakiionyeshi kazi yoyote. Kazi inaweza kuwa ilikabidhiwa muda mrefu uliopita, au nambari si sahihi. Ulize kaunta.",
+      sw: "Kiungo hiki hakiionyeshi kazi yoyote. Kazi inaweza kuwa ilikabidhiwa muda mrefu uliopita, au nambari si sahihi. Ulize mtu wa kaunta.",
       en: "This link shows no job. The repair may have been handed back a long time ago, or the code is wrong. Please ask at the counter.",
     },
     loadError: {
-      sw: "Hatuwezi kupata habari za sasa. Jaribu tena au ulize kaunta.",
+      sw: "Hatuwezi kupata hali ya sasa. Jaribu tena, au ulize mtu wa kaunta.",
       en: "We cannot load the latest information. Try again or ask at the counter.",
     },
     backToShop: { sw: "Rudi kwenye duka", en: "Back to the store" },
     trackFooter: {
-      sw: "Habari hizi ni nakili kutoka karakani na husasishwa mara kwa mara — thibitisha mabadiliko makubwa na kaunta.",
+      sw: "Taarifa hizi ni nakili kutoka kwenye rekodi za karakana na zisasishwa mara kwa mara — thibitisha mabadiliko makubwa kwa mtu wa kaunta.",
       en: "This is a mirror of the workshop records and is refreshed periodically — confirm big changes at the counter.",
     },
   };
