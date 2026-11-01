@@ -1,0 +1,27 @@
+{
+  "code": "52700908-f3e3-4cfb-8cae-1bcd8cceab4d",
+  "ref": "JB-000103",
+  "state": "RECEIVED",
+  "stateSw": "Imepokelewa",
+  "stateEn": "Received",
+  "receivedAt": "2026-11-01T02:05:14.486Z",
+  "deliveredAt": null,
+  "updatedAt": "2026-11-01T02:07:30.357Z",
+  "device": {
+    "categoryEn": "Amplifiers",
+    "categorySw": "Vikuza sauti",
+    "brand": null,
+    "model": "HP BATTERY- BMS"
+  },
+  "estimate": null,
+  "timeline": [
+    {
+      "state": "RECEIVED",
+      "stateSw": "Imepokelewa",
+      "stateEn": "Received",
+      "at": "2026-11-01T02:05:14.488Z"
+    }
+  ],
+  "currency": "TZS",
+  "generatedAt": "2026-11-01T02:56:34.720Z"
+}

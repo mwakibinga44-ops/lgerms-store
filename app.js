@@ -21,7 +21,7 @@
   var STR = {
     pageTitle: { sw: "LubhaTech Duka | Bidhaa na Nyaraka", en: "LubhaTech Store | Parts & Handouts" },
     pageDesc: {
-      sw: "Omba vipuri, bidhaa na nyaraka za mafunzo kutoka LubhaTech kupitia WhatsApp. Bei na rehali ni za sasa.",
+      sw: "Omba vipuri, bidhaa na nyaraka za mafunzo kutoka LubhaTech kupitia WhatsApp. Bei na stoo ni za sasa.",
       en: "Request spare parts, products and learning handouts from LubhaTech over WhatsApp. Live prices and stock.",
     },
     searchLabel: { sw: "Tafuta", en: "Search" },
@@ -88,7 +88,7 @@
     msgHeader: { sw: "Ombi kutoka ukurasa wa", en: "Request from the store page of" },
     msgTotal: { sw: "Jumla", en: "Total" },
     msgFooter: { sw: "Asante.", en: "Thank you." },
-    fresh: { sw: "Bei na rehali zimesasishwa", en: "Prices and stock updated" },
+    fresh: { sw: "Bei na stoo zimesasishwa", en: "Prices and stock updated" },
     freshStale: {
       sw: ", tafadhali thibitisha bei kabla ya kununua",
       en: ", please confirm the price before buying",
