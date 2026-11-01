@@ -8,8 +8,24 @@
     "bank": "0172020810"
   },
   "currency": "TZS",
-  "generatedAt": "2026-11-01T00:56:34.487Z",
+  "generatedAt": "2026-11-01T01:26:43.658Z",
   "items": [],
-  "handouts": [],
+  "handouts": [
+    {
+      "id": "01a194af-c8f0-72fe-9709-5faf67cda0b6",
+      "title": "DIAGOSTIC TOOL",
+      "sessionCode": "00001BNRS",
+      "courseName": "LEVEL 1 LEPAIR",
+      "courseNameSw": "UFUNDI DARAJA LA 1",
+      "startsAt": "2026-11-01T01:15:00.000Z",
+      "venue": "LUBHATECH OFFICE",
+      "price": "50000",
+      "listPrice": "50000",
+      "priceDate": null,
+      "mimeType": "text/html",
+      "sizeBytes": 680935,
+      "available": 1
+    }
+  ],
   "courses": []
 }
