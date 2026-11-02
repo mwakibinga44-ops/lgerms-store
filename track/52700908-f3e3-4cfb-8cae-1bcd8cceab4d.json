@@ -1,27 +1,51 @@
 {
   "code": "52700908-f3e3-4cfb-8cae-1bcd8cceab4d",
   "ref": "JB-000103",
-  "state": "RECEIVED",
-  "stateSw": "Imepokelewa",
-  "stateEn": "Received",
+  "state": "IN_REPAIR",
+  "stateSw": "Inatengenezwa",
+  "stateEn": "In repair",
   "receivedAt": "2026-11-01T02:05:14.486Z",
   "deliveredAt": null,
-  "updatedAt": "2026-11-01T02:07:30.357Z",
+  "updatedAt": "2026-11-02T03:16:44.829Z",
   "device": {
     "categoryEn": "Amplifiers",
     "categorySw": "Vikuza sauti",
     "brand": null,
     "model": "HP BATTERY- BMS"
   },
-  "estimate": null,
+  "estimate": {
+    "status": "APPROVED",
+    "currency": "TZS",
+    "total": "50000",
+    "validUntil": "2026-11-05T03:15:16.557Z",
+    "issuedAt": "2026-11-02T03:15:16.557Z"
+  },
   "timeline": [
     {
       "state": "RECEIVED",
       "stateSw": "Imepokelewa",
       "stateEn": "Received",
       "at": "2026-11-01T02:05:14.488Z"
+    },
+    {
+      "state": "AWAITING_QUOTATION",
+      "stateSw": "Kutayarisha bei",
+      "stateEn": "Preparing quotation",
+      "at": "2026-11-02T03:09:12.687Z"
+    },
+    {
+      "state": "AWAITING_CUSTOMER_APPROVAL",
+      "stateSw": "Kusubiri idhini ya mteja",
+      "stateEn": "Awaiting customer approval",
+      "at": "2026-11-02T03:15:37.164Z"
+    },
+    {
+      "state": "IN_REPAIR",
+      "stateSw": "Inatengenezwa",
+      "stateEn": "In repair",
+      "at": "2026-11-02T03:16:44.832Z"
     }
   ],
   "currency": "TZS",
-  "generatedAt": "2026-11-02T02:56:34.135Z"
+  "generatedAt": "2026-11-02T03:26:36.820Z"
 }
