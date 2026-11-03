@@ -26,8 +26,11 @@
     "decidedOnline": false,
     "decidedOnCurrentQuote": true,
     "quoteAckAt": null,
+    "quoteAckByCounter": false,
     "deviceAckAt": null,
+    "deviceAckByCounter": false,
     "feedbackAt": null,
+    "feedbackByCounter": false,
     "opinions": 0
   },
   "timeline": [
@@ -39,7 +42,7 @@
     },
     {
       "state": "AWAITING_QUOTATION",
-      "stateSw": "Kutayarisha bei",
+      "stateSw": "Kukadiria bei",
       "stateEn": "Preparing quotation",
       "at": "2026-11-03T14:13:05.095Z"
     },
@@ -81,5 +84,5 @@
     }
   ],
   "currency": "TZS",
-  "generatedAt": "2026-11-03T22:56:37.942Z"
+  "generatedAt": "2026-11-03T23:26:34.159Z"
 }

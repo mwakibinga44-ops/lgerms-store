@@ -61,6 +61,10 @@
       sw: "Hakuna kadirio la bei lililotolewa bado. Kaunta itakujulisha baada ya ukaguzi.",
       en: "No quote has been issued yet. The counter will tell you after the inspection.",
     },
+    estimateClosed: {
+      sw: "Kadirio hili la bei limekwisha. Kaunta itakujulisha kuhusu hatua inayofuata.",
+      en: "This quotation is closed. The counter will tell you what happens next.",
+    },
     askTitle: { sw: "Uliza kuhusu kazi hii", en: "Ask about this job" },
     askMsg: {
       sw: "Swali kuhusu kazi ya ukarabati namba",
@@ -368,7 +372,10 @@
     var e = job.estimate;
     if (!e) {
       var none = el("div", "estimate");
-      none.appendChild(el("p", "estimate-note", t("noEstimate")));
+      // A quotation the customer already answered is no longer the open one, so it leaves the estimate box.
+      // Saying "nothing was quoted" over their own decision would deny them what they told the shop.
+      var answered = job.answers && job.answers.decision;
+      none.appendChild(el("p", "estimate-note", t(answered ? "estimateClosed" : "noEstimate")));
       return none;
     }
     var box = el("div", "estimate");
