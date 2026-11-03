@@ -69,6 +69,15 @@ the branch this build was tested on. Turning on the online path needs a public h
 address for the API and that page's own address listed in `CORS_ORIGINS`; see
 `docs/DEPLOYMENT_RUNBOOK.md`.
 
+Either way, the page then reads the shop's book back to the customer. The **Yaliyofikia
+karakana** block lists what was actually recorded — including an answer a colleague typed
+in from a WhatsApp reply, which the page marks as written at the counter because that is
+the half the customer cannot see. A quotation that has closed (declined, or replaced by a
+new version) leaves the price block; the page then says **Kadirio hili la bei limekwisha**
+rather than claiming nothing was ever quoted, and the customer's own answers stay listed.
+Both directions of that exchange were walked against the running workshop API on 2026-11-04
+(`docs/ONPREM_INSTALL.md` §5.6).
+
 ## catalog.json is written by the workshop
 
 `catalog.json` is refreshed from inside the workshop and pushed to this repository
