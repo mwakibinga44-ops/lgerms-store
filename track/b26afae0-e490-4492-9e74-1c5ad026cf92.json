@@ -1,0 +1,51 @@
+{
+  "code": "b26afae0-e490-4492-9e74-1c5ad026cf92",
+  "ref": "JB-000109",
+  "state": "IN_REPAIR",
+  "stateSw": "Inatengenezwa",
+  "stateEn": "In repair",
+  "receivedAt": "2026-11-03T14:13:05.045Z",
+  "deliveredAt": null,
+  "updatedAt": "2026-11-03T14:25:17.547Z",
+  "device": {
+    "categoryEn": "Televisions",
+    "categorySw": "Televisheni",
+    "brand": null,
+    "model": "star x 32 tv"
+  },
+  "estimate": {
+    "status": "APPROVED",
+    "currency": "TZS",
+    "total": "60000",
+    "validUntil": "2026-11-10T14:14:16.446Z",
+    "issuedAt": "2026-11-03T14:14:16.446Z"
+  },
+  "timeline": [
+    {
+      "state": "RECEIVED",
+      "stateSw": "Imepokelewa",
+      "stateEn": "Received",
+      "at": "2026-11-03T14:13:05.062Z"
+    },
+    {
+      "state": "AWAITING_QUOTATION",
+      "stateSw": "Kutayarisha bei",
+      "stateEn": "Preparing quotation",
+      "at": "2026-11-03T14:13:05.095Z"
+    },
+    {
+      "state": "AWAITING_CUSTOMER_APPROVAL",
+      "stateSw": "Kusubiri idhini ya mteja",
+      "stateEn": "Awaiting customer approval",
+      "at": "2026-11-03T14:23:43.273Z"
+    },
+    {
+      "state": "IN_REPAIR",
+      "stateSw": "Inatengenezwa",
+      "stateEn": "In repair",
+      "at": "2026-11-03T14:25:17.553Z"
+    }
+  ],
+  "currency": "TZS",
+  "generatedAt": "2026-11-03T14:26:34.912Z"
+}
