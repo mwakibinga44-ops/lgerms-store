@@ -22,10 +22,10 @@
   };
 
   var STR = {
-    pageTitle: { sw: "Fuatilia urekebishaji | LubhaTech", en: "Track your repair | LubhaTech" },
-    pageTitleShort: { sw: "Fuatilia urekebishaji", en: "Track your repair" },
+    pageTitle: { sw: "Fuatilia ukarabati wako | LubhaTech", en: "Track your repair | LubhaTech" },
+    pageTitleShort: { sw: "Fuatilia ukarabati wako", en: "Track your repair" },
     pageDesc: {
-      sw: "Angalia hali ya urekebishaji wa kifaa chako karakani kwa kutumia kiungo au nambari uliyopewa.",
+      sw: "Angalia hali ya ukarabati wa kifaa chako karakani kwa kutumia kiungo au nambari uliyopewa.",
       en: "Check the progress of a repair at the workshop with the link or code you were given.",
     },
     refLabel: { sw: "Namba ya kazi", en: "Job reference" },
@@ -38,24 +38,24 @@
       en: " — this may be out of date, please confirm with the counter",
     },
     timelineTitle: { sw: "Hatua zilizopita", en: "What has happened" },
-    estimateTitle: { sw: "Kadri ya gharama", en: "Estimate" },
-    estimateTotal: { sw: "Jumla ya kadri", en: "Estimated total" },
+    estimateTitle: { sw: "Nukuu ya bei", en: "Quotation" },
+    estimateTotal: { sw: "Jumla ya nukuu", en: "Quoted total" },
     estimateIssued: {
-      sw: "Kadri hii bado haijathibitishwa na mteja — gharama ya mwisho inaweza kubadilika.",
+      sw: "Nukuu hii bado haujathibitisha — gharama ya mwisho inaweza kubadilika.",
       en: "This quote is not yet approved by you — the final cost may change.",
     },
     estimateApproved: {
-      sw: "Kadri imethibitishwa. Gharama ya mwisho inathibitishwa kwenye kaunta.",
+      sw: "Nukuu imethibitishwa. Gharama ya mwisho inathibitishwa kwenye kaunta.",
       en: "The quote is approved. The counter confirms the final cost.",
     },
     estimateValidUntil: { sw: "Halisi hadi", en: "Valid until" },
     noEstimate: {
-      sw: "Hakuna kadri iliyotolewa bado. Kaunta itakujulisha baada ya ukaguzi.",
+      sw: "Hakuna nukuu iliyotolewa bado. Kaunta itakujulisha baada ya ukaguzi.",
       en: "No quote has been issued yet. The counter will tell you after the inspection.",
     },
     askTitle: { sw: "Uliza kuhusu kazi hii", en: "Ask about this job" },
     askMsg: {
-      sw: "Swali kuhusu kazi ya urekebishaji namba",
+      sw: "Swali kuhusu kazi ya ukarabati namba",
       en: "A question about repair job",
     },
     askFrom: { sw: "kutoka ukurasa wa kufuatilia.", en: "from the tracking page." },
@@ -66,7 +66,7 @@
     },
     pasteLabel: { sw: "Kiungo au nambari ya kufuatilia", en: "Tracking link or code" },
     pastePlaceholder: {
-      sw: "mchoro: https://…/track.html?t=… au a1b2c3d4-…",
+      sw: "mfano: https://…/track.html?t=… au a1b2c3d4-…",
       en: "e.g. https://…/track.html?t=… or a1b2c3d4-…",
     },
     pasteHint: {
@@ -120,11 +120,11 @@
       en: "The workshop has received your answer.",
     },
     answerAlready: {
-      sw: "Umetuma jibu hili tayari — karakana limepokea.",
-      en: "You have already sent this answer — the workshop has it.",
+      sw: "Umetuma jibu hili tayari.",
+      en: "You have already sent this answer.",
     },
     answerOffline: {
-      sw: "Karakana bado haijapanga njia ya kujibu mtandaoni, kwa hivyo kitufe hiki kinafungua WhatsApp uandikie kaunta. Jibu lako hapo halishikiliwi kwenye mfumo hadi mtu wa kaunta aliandike.",
+      sw: "Karakana bado haijapanga njia ya kujibu mtandaoni, kwa hivyo kitufe hiki kinafungua WhatsApp uandikie kaunta. Jibu lako hapo huandikwi kwenye mfumo hadi mtu wa kaunta aandike.",
       en: "This workshop has not set up an online answer path, so this button opens WhatsApp for you to write to the counter. Nothing is recorded until the counter types it in.",
     },
     sendFailed: {
@@ -158,7 +158,7 @@
         en: "No quotation has been issued for this job yet.",
       },
       DEVICE_NOT_HANDED_BACK: {
-        sw: "Karakana bado haijarekodi kuukabidhi kifaa huu.",
+        sw: "Karakana bado haijarekodi kukikabidhi kifaa hiki.",
         en: "The workshop has not recorded handing this device back.",
       },
       TOO_MANY_REQUESTS: {
@@ -188,6 +188,8 @@
   var customerName = loadName();
   /** Answers this page has already landed, keyed by control. The published file lags minutes behind a tap. */
   var sent = {};
+  /** WhatsApp links on screen, rebuilt whenever the name changes: a typed name must reach the shop's message. */
+  var waRows = [];
 
   function t(key) {
     var entry = STR[key];
@@ -426,6 +428,13 @@
     return parts.join(" — ");
   }
 
+  function refreshWaLinks() {
+    waRows.forEach(function (row) {
+      var url = whatsappUrl(waAnswerText(row.short));
+      if (url) row.a.href = url;
+    });
+  }
+
   /**
    * The one path an answer takes: check the name, disable the button, then the server's own words on a
    * refusal. `makeBody` returns the body, or a sentence to show the customer when what they typed is short.
@@ -494,6 +503,7 @@
     a.href = wa;
     a.target = "_blank";
     a.rel = "noopener";
+    waRows.push({ a: a, short: waShort });
     row.appendChild(a);
     return row;
   }
@@ -511,6 +521,7 @@
     input.addEventListener("input", function () {
       customerName = input.value;
       saveName();
+      refreshWaLinks();
     });
     field.appendChild(label);
     field.appendChild(input);
@@ -518,6 +529,11 @@
     return field;
   }
 
+  /**
+   * The opinion block. Only the online path can collect a rating and the words in a form worth reading by
+   * the counter; on WhatsApp the customer writes them in the chat, so the row is one link that says what
+   * the message is about.
+   */
   function feedbackNode() {
     var block = el("div", "answer-block");
     block.appendChild(el("p", "estimate-label", t("feedbackTitle")));
@@ -525,8 +541,10 @@
       block.appendChild(el("p", "answer-ok", t("answerAlready")));
       return block;
     }
+    var rating = null;
+    var words = null;
     if (apiBase()) {
-      var rating = el("select");
+      rating = el("select");
       rating.id = "answerRating";
       var none = el("option", null, t("ratingNone"));
       none.value = "";
@@ -536,7 +554,7 @@
         o.value = String(n);
         rating.appendChild(o);
       });
-      var words = el("textarea");
+      words = el("textarea");
       words.id = "answerWords";
       words.rows = 3;
       words.maxLength = 1000;
@@ -544,37 +562,28 @@
       rLabel.setAttribute("for", "answerRating");
       var wLabel = el("label", null, t("feedbackMessage"));
       wLabel.setAttribute("for", "answerWords");
-      var btn = answerButton(t("feedbackSend"), false);
-      var status = el("p", "track-hint");
-      status.hidden = true;
       block.appendChild(rLabel);
       block.appendChild(rating);
       block.appendChild(wLabel);
       block.appendChild(words);
-      block.appendChild(btn);
-      block.appendChild(status);
-      sendAnswer("feedback", btn, status, "feedback", function () {
-        var message = words.value.trim();
-        if (message.length < 3) return t("feedbackShort");
-        var body = { name: trimmedName(), message: message };
-        var score = toNumber(rating.value);
-        if (score !== null) body.rating = score;
-        return body;
-      });
-      return block;
     }
-    var wa = whatsappUrl(waAnswerText(t("feedbackTitle")));
-    if (!wa) {
-      block.appendChild(el("p", "card-note", t("counterNote")));
-      return block;
-    }
-    var row = el("div", "answer-row");
-    var a = el("a", "btn btn-request", t("feedbackSend"));
-    a.href = wa;
-    a.target = "_blank";
-    a.rel = "noopener";
-    row.appendChild(a);
-    block.appendChild(row);
+    block.appendChild(
+      answerRow(
+        "feedback",
+        t("feedbackSend"),
+        "feedback",
+        function () {
+          var message = String(words ? words.value : "").trim();
+          if (message.length < 3) return t("feedbackShort");
+          var body = { name: trimmedName(), message: message };
+          var score = toNumber(rating ? rating.value : "");
+          if (score !== null) body.rating = score;
+          return body;
+        },
+        t("feedbackTitle"),
+        false,
+      ),
+    );
     return block;
   }
 
@@ -585,6 +594,8 @@
    * a button that is known to be refused.
    */
   function answersNode() {
+    // Every render builds its own links; the ones from the last render are off the page.
+    waRows = [];
     var estimate = job.estimate;
     var canDecide = job.state === "AWAITING_CUSTOMER_APPROVAL" && !!estimate && estimate.status === "ISSUED";
     var delivered = job.state === "DELIVERED";

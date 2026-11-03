@@ -43,6 +43,32 @@ more than two weeks ago — and its file is removed on the next push.
 If you were given the code on paper rather than a link, open `track.html` and paste
 the code in.
 
+### Majibu ya mteja — answering from the page
+
+Below the steps, the page lets the customer answer three things, and nothing else:
+**Nimeipokea nukuu hii** (the quotation reached me), **Nakubali / Nakataa** (accept or
+decline the price shown) while the job is still waiting on that answer, and once the
+device has been handed back **Nimechukua kifaa changu** plus **Maoni yako** with a
+rating out of five. The buttons carry only the customer's name and their choice — no
+job id, no amount, no state — and every rule the counter follows is checked again on
+the server, so a tap cannot move a price or a step by itself.
+
+Where the answer goes depends on one published value, `shop.api` in `catalog.json`,
+which is the workshop's `STORE_API_URL`:
+
+- **Set** (must start with `https://`): the page posts to
+  `<shop.api>/store/jobs/<code>/quote-decision`, `/receipt` or `/feedback`, and the
+  server's own refusal is what the customer reads back — an expired quotation, one
+  already answered, a job closed to answers, or too many taps in a minute.
+- **Blank, or not `https://`**: the same buttons become WhatsApp links to the shop's
+  number, with the job reference and the customer's name already written out, and the
+  page says plainly that nothing is recorded until the counter types it in.
+
+That second branch is what a workshop running only on its own network gets, and it is
+the branch this build was tested on. Turning on the online path needs a public https
+address for the API and that page's own address listed in `CORS_ORIGINS`; see
+`docs/DEPLOYMENT_RUNBOOK.md`.
+
 ## catalog.json is written by the workshop
 
 `catalog.json` is refreshed from inside the workshop and pushed to this repository

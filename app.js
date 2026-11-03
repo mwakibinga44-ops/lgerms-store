@@ -65,7 +65,7 @@
       en: "No WhatsApp or phone number is set — please ask at the counter.",
     },
     longNote: {
-      sw: "Ombi ni refu mno kutuma kwa simu — chagua idadi ndogo zaidi au omba kwenye kaunta.",
+      sw: "Ombi hili ni refu mno kutumwa — chagua bidhaa chache zaidi, au ulize kwenye kaunta.",
       en: "The request is too long to send by phone — pick fewer items, or ask at the counter.",
     },
     shortNote: { sw: "Ombi limefupishwa kwa urefu.", en: "Message shortened to fit." },
@@ -99,7 +99,7 @@
     payMpesa: { sw: "M-Pesa", en: "M-Pesa" },
     payBank: { sw: "Benki (NBC)", en: "Bank (NBC)" },
     payNote: {
-      sw: "Malipo hayathibitishi ombi — ombi lithibitishwa na wafanyakazi kwenye kaunta.",
+      sw: "Malipo hayathibitishi ombi — ombi huthibitishwa na wafanyakazi wa kaunta.",
       en: "Paying does not confirm an order — staff at the counter confirm it.",
     },
   };
