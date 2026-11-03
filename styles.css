@@ -822,6 +822,38 @@ a {
   border-top: 1px solid var(--line);
 }
 
+/* The shop's record of the customer's answers, told back to them as facts with the time they were taken. */
+.echo-card {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.echo-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.echo-item {
+  padding-left: 12px;
+  border-left: 3px solid var(--brand);
+}
+
+.echo-line {
+  margin: 0;
+  font-weight: 600;
+}
+
+.echo-when {
+  margin: 2px 0 0;
+  color: var(--muted);
+  font-size: 0.9em;
+}
+
 .btn:disabled {
   opacity: 0.55;
   cursor: default;
