@@ -104,3 +104,10 @@ npx --yes serve -l 8123 .
   link was given. Marked `noindex` and excluded in `robots.txt`.
 - `assets/logo.png` — the shop mark, with a text fallback if it fails to load.
 - `.nojekyll`, `robots.txt` — static-hosting files.
+
+Both pages carry their own `STR` dictionary (`{ sw, en }` per key) and start in Kiswahili. `npm run i18n:check` in the
+repository root reads these two dictionaries too: a key missing its Kiswahili or English value, an empty value, a
+`t("…")` call or `data-i18n` attribute with no entry, or an `STR` that is not a readable literal fails the build. The
+vocabulary is the shop's, not a second set of names — **nukuu ya bei** for the quotation the customer answers,
+**ukarabati** for the repair, **kaunta** and **karakana** as everywhere else — and it is recorded in
+`docs/KISWAHILI_GLOSSARY.md` §7 and §9.6.

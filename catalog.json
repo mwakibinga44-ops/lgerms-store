@@ -5,10 +5,11 @@
     "phone": "",
     "address": "Barabara ya Nyerere Bomang'ombe, Hai Kilimanjaro",
     "mpesa": "55965639",
-    "bank": "0172020810"
+    "bank": "0172020810",
+    "api": ""
   },
   "currency": "TZS",
-  "generatedAt": "2026-11-03T16:56:37.256Z",
+  "generatedAt": "2026-11-03T17:26:33.079Z",
   "items": [
     {
       "id": "01a1a099-6207-76d9-9c94-ea8df036c4e0",
