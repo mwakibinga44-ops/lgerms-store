@@ -1,12 +1,12 @@
 {
   "code": "52700908-f3e3-4cfb-8cae-1bcd8cceab4d",
   "ref": "JB-000103",
-  "state": "IN_REPAIR",
-  "stateSw": "Inatengenezwa",
-  "stateEn": "In repair",
+  "state": "TESTING",
+  "stateSw": "Upimaji",
+  "stateEn": "Testing",
   "receivedAt": "2026-11-01T02:05:14.486Z",
   "deliveredAt": null,
-  "updatedAt": "2026-11-02T03:16:44.829Z",
+  "updatedAt": "2026-11-03T08:44:46.929Z",
   "device": {
     "categoryEn": "Amplifiers",
     "categorySw": "Vikuza sauti",
@@ -44,8 +44,14 @@
       "stateSw": "Inatengenezwa",
       "stateEn": "In repair",
       "at": "2026-11-02T03:16:44.832Z"
+    },
+    {
+      "state": "TESTING",
+      "stateSw": "Upimaji",
+      "stateEn": "Testing",
+      "at": "2026-11-03T08:44:46.958Z"
     }
   ],
   "currency": "TZS",
-  "generatedAt": "2026-11-03T00:56:35.569Z"
+  "generatedAt": "2026-11-03T13:26:34.166Z"
 }

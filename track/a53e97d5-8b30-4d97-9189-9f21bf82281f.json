@@ -1,0 +1,75 @@
+{
+  "code": "a53e97d5-8b30-4d97-9189-9f21bf82281f",
+  "ref": "JB-000108",
+  "state": "READY_FOR_COLLECTION",
+  "stateSw": "Tayari kuchukuliwa",
+  "stateEn": "Ready for collection",
+  "receivedAt": "2026-11-03T08:57:23.835Z",
+  "deliveredAt": null,
+  "updatedAt": "2026-11-03T13:20:32.149Z",
+  "device": {
+    "categoryEn": "Phones",
+    "categorySw": "Simu",
+    "brand": null,
+    "model": "INFINIX SMART 10"
+  },
+  "estimate": {
+    "status": "APPROVED",
+    "currency": "TZS",
+    "total": "20000",
+    "validUntil": "2026-11-10T08:59:37.558Z",
+    "issuedAt": "2026-11-03T08:59:37.558Z"
+  },
+  "timeline": [
+    {
+      "state": "RECEIVED",
+      "stateSw": "Imepokelewa",
+      "stateEn": "Received",
+      "at": "2026-11-03T08:57:23.844Z"
+    },
+    {
+      "state": "AWAITING_QUOTATION",
+      "stateSw": "Kutayarisha bei",
+      "stateEn": "Preparing quotation",
+      "at": "2026-11-03T08:57:23.933Z"
+    },
+    {
+      "state": "AWAITING_CUSTOMER_APPROVAL",
+      "stateSw": "Kusubiri idhini ya mteja",
+      "stateEn": "Awaiting customer approval",
+      "at": "2026-11-03T08:59:43.539Z"
+    },
+    {
+      "state": "IN_REPAIR",
+      "stateSw": "Inatengenezwa",
+      "stateEn": "In repair",
+      "at": "2026-11-03T09:00:19.966Z"
+    },
+    {
+      "state": "TESTING",
+      "stateSw": "Upimaji",
+      "stateEn": "Testing",
+      "at": "2026-11-03T09:01:06.260Z"
+    },
+    {
+      "state": "QUALITY_CONTROL",
+      "stateSw": "Udhibiti wa ubora",
+      "stateEn": "Quality control",
+      "at": "2026-11-03T09:03:54.154Z"
+    },
+    {
+      "state": "COMPLETED",
+      "stateSw": "Imekamilika",
+      "stateEn": "Completed",
+      "at": "2026-11-03T13:17:17.862Z"
+    },
+    {
+      "state": "READY_FOR_COLLECTION",
+      "stateSw": "Tayari kuchukuliwa",
+      "stateEn": "Ready for collection",
+      "at": "2026-11-03T13:20:32.152Z"
+    }
+  ],
+  "currency": "TZS",
+  "generatedAt": "2026-11-03T13:26:34.166Z"
+}
