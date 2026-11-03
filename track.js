@@ -46,19 +46,19 @@
       en: " — this may be out of date, please confirm with the counter",
     },
     timelineTitle: { sw: "Hatua zilizopita", en: "What has happened" },
-    estimateTitle: { sw: "Nukuu ya bei", en: "Quotation" },
-    estimateTotal: { sw: "Jumla ya nukuu", en: "Quoted total" },
+    estimateTitle: { sw: "Kadirio la bei", en: "Quotation" },
+    estimateTotal: { sw: "Jumla ya kadirio", en: "Quoted total" },
     estimateIssued: {
-      sw: "Nukuu hii bado haujathibitisha — gharama ya mwisho inaweza kubadilika.",
-      en: "This quote is not yet approved by you — the final cost may change.",
+      sw: "Kadirio hili bado halijathibitishwa — gharama ya mwisho inaweza kubadilika.",
+      en: "This quote is not yet approved — the final cost may change.",
     },
     estimateApproved: {
-      sw: "Nukuu imethibitishwa. Gharama ya mwisho inathibitishwa kwenye kaunta.",
+      sw: "Kadirio limethibitishwa. Gharama ya mwisho inathibitishwa kwenye kaunta.",
       en: "The quote is approved. The counter confirms the final cost.",
     },
     estimateValidUntil: { sw: "Halisi hadi", en: "Valid until" },
     noEstimate: {
-      sw: "Hakuna nukuu iliyotolewa bado. Kaunta itakujulisha baada ya ukaguzi.",
+      sw: "Hakuna kadirio la bei lililotolewa bado. Kaunta itakujulisha baada ya ukaguzi.",
       en: "No quote has been issued yet. The counter will tell you after the inspection.",
     },
     askTitle: { sw: "Uliza kuhusu kazi hii", en: "Ask about this job" },
@@ -102,9 +102,9 @@
       sw: "Haya ndiyo majibu yaliyorekodiwa kwa kazi hii — awe yalitumwa hapa kwenye kiungo au yaliandikwa na mtu wa kaunta.",
       en: "These are the answers recorded for this job — whether sent from this link or written down at the counter.",
     },
-    echoAccept: { sw: "Ulikubali nukuu hii", en: "You accepted this quotation" },
-    echoDecline: { sw: "Ulikataa nukuu hii", en: "You declined this quotation" },
-    echoQuoteAck: { sw: "Umesema umepokea nukuu", en: "You said you received the quotation" },
+    echoAccept: { sw: "Ulikubali kadirio hili", en: "You accepted this quotation" },
+    echoDecline: { sw: "Ulikataa kadirio hili", en: "You declined this quotation" },
+    echoQuoteAck: { sw: "Umesema umepokea kadirio la bei", en: "You said you received the quotation" },
     echoDeviceAck: { sw: "Umesema ulichukua kifaa", en: "You said you collected the device" },
     echoFeedback: {
       sw: "Umetuma maoni mara {n}",
@@ -127,7 +127,7 @@
       sw: "Andika jina lako kwanza (angalau herufi 2).",
       en: "Write your name first (at least 2 letters).",
     },
-    quoteAck: { sw: "Nimeipokea nukuu hii", en: "I have received this quotation" },
+    quoteAck: { sw: "Nimepokea kadirio hili", en: "I have received this quotation" },
     quoteAccept: { sw: "Nakubali", en: "I accept this price" },
     quoteDecline: { sw: "Nakataa", en: "I decline this price" },
     deviceAck: { sw: "Nimechukua kifaa changu", en: "I have collected my device" },
@@ -159,15 +159,15 @@
     busy: { sw: "Inatuma…", en: "Sending…" },
     errorByCode: {
       NO_OPEN_QUOTATION: {
-        sw: "Hakuna nukuu inayosubiri jibu lako kwa kazi hii.",
+        sw: "Hakuna kadirio la bei linalosubiri jibu lako kwa kazi hii.",
         en: "There is no quotation waiting for your answer on this job.",
       },
       QUOTE_ALREADY_DECIDED: {
-        sw: "Nukuu hii tayari imepata jibu. Badilisha jibu kwa kuuliza kaunta.",
+        sw: "Kadirio hili tayari limepata jibu. Badilisha jibu kwa kuuliza kaunta.",
         en: "This quotation already has an answer. Ask the counter to change it.",
       },
       QUOTE_EXPIRED: {
-        sw: "Nukuu hii imeisha muda wake. Kaunta itatoa mpya.",
+        sw: "Kadirio hili limeisha muda wake. Kaunta itatoa jipya.",
         en: "This quotation has expired. The counter will issue a new one.",
       },
       QUOTE_JOB_STATE: {
@@ -179,7 +179,7 @@
         en: "This job is closed to customer answers.",
       },
       NO_QUOTATION_YET: {
-        sw: "Hakuna nukuu iliyotolewa bado kwa kazi hii.",
+        sw: "Hakuna kadirio la bei lililotolewa bado kwa kazi hii.",
         en: "No quotation has been issued for this job yet.",
       },
       DEVICE_NOT_HANDED_BACK: {
@@ -193,9 +193,8 @@
     },
     waAccept: { sw: "Nakubali", en: "I accept" },
     waDecline: { sw: "Nakataa", en: "I decline" },
-    waQuoteAck: { sw: "Nimeipokea", en: "I have received" },
+    waQuoteAck: { sw: "Nimepokea kadirio", en: "I have received the quotation" },
     waDeviceAck: { sw: "Nimechukua kifaa changu", en: "I have collected my device" },
-    waQuote: { sw: "nukuu ya", en: "the quotation of" },
     waJob: { sw: "kwa kazi", en: "for job" },
     waName: { sw: "Jina", en: "Name" },
     trackFooter: {
