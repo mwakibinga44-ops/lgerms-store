@@ -2,12 +2,15 @@
  * LGERMS customer tracking page — reads ./track/<token>.json, one file per job,
  * pushed by scripts/publish-store.mjs. There is no index to browse: holding one
  * link shows one job. The shop words (name, WhatsApp, phone) come from ./catalog.json.
- * No build step, no framework, no API calls. Keep it that way.
+ * No build step, no framework. Reading stays a file fetch; a customer's own answer
+ * goes to ./catalog.json's shop.api when the workshop has published a public https
+ * address there, and to WhatsApp when it has not. Nothing else is ever uploaded.
  */
 (function () {
   "use strict";
 
   var LANG_KEY = "lgerms.storefront.lang.v1";
+  var NAME_KEY = "lgerms.storefront.name.v1";
   var STALE_MS = 6 * 60 * 60 * 1000;
   var TOKEN_RE = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 
@@ -85,6 +88,91 @@
       en: "We cannot load the latest information. Try again or ask at the counter.",
     },
     backToShop: { sw: "Rudi kwenye duka", en: "Back to the store" },
+    answerTitle: { sw: "Majibu yako", en: "Your answers" },
+    answerIntro: {
+      sw: "Vitufe hivi haviungi bei wala hatua ya kazi — vinasema tu jibu lako kwa kazi hii.",
+      en: "These buttons change no price and no step of the job — they only carry your answer for this job.",
+    },
+    nameLabel: { sw: "Jina lako", en: "Your name" },
+    nameHint: {
+      sw: "Jina hili ndilo litakaandikwa kwenye rekodi ya kazi hii.",
+      en: "This is the name the workshop writes on this job's record.",
+    },
+    nameMissing: {
+      sw: "Andika jina lako kwanza (angalau herufi 2).",
+      en: "Write your name first (at least 2 letters).",
+    },
+    quoteAck: { sw: "Nimeipokea nukuu hii", en: "I have received this quotation" },
+    quoteAccept: { sw: "Nakubali", en: "I accept this price" },
+    quoteDecline: { sw: "Nakataa", en: "I decline this price" },
+    deviceAck: { sw: "Nimechukua kifaa changu", en: "I have collected my device" },
+    feedbackTitle: { sw: "Maoni yako", en: "Your opinion" },
+    feedbackRating: { sw: "Unipa nambari ngapi?", en: "What rating would you give it?" },
+    feedbackMessage: { sw: "Maoni yako (herufi 3 au zaidi)", en: "Your words (3 characters or more)" },
+    feedbackSend: { sw: "Tuma maoni", en: "Send your opinion" },
+    feedbackShort: {
+      sw: "Andika maoni yako (herufi 3 au zaidi).",
+      en: "Write your words (3 characters or more).",
+    },
+    ratingNone: { sw: "Bila nambari", en: "No rating" },
+    answerSent: {
+      sw: "Jibu lako limefikia karakana.",
+      en: "The workshop has received your answer.",
+    },
+    answerAlready: {
+      sw: "Umetuma jibu hili tayari — karakana limepokea.",
+      en: "You have already sent this answer — the workshop has it.",
+    },
+    answerOffline: {
+      sw: "Karakana bado haijapanga njia ya kujibu mtandaoni, kwa hivyo kitufe hiki kinafungua WhatsApp uandikie kaunta. Jibu lako hapo halishikiliwi kwenye mfumo hadi mtu wa kaunta aliandike.",
+      en: "This workshop has not set up an online answer path, so this button opens WhatsApp for you to write to the counter. Nothing is recorded until the counter types it in.",
+    },
+    sendFailed: {
+      sw: "Jibu lako halijafikia karakana. Jaribu tena, au tumia WhatsApp / ulize kaunta.",
+      en: "Your answer did not reach the workshop. Try again, or use WhatsApp / ask at the counter.",
+    },
+    busy: { sw: "Inatuma…", en: "Sending…" },
+    errorByCode: {
+      NO_OPEN_QUOTATION: {
+        sw: "Hakuna nukuu inayosubiri jibu lako kwa kazi hii.",
+        en: "There is no quotation waiting for your answer on this job.",
+      },
+      QUOTE_ALREADY_DECIDED: {
+        sw: "Nukuu hii tayari imepata jibu. Badilisha jibu kwa kuuliza kaunta.",
+        en: "This quotation already has an answer. Ask the counter to change it.",
+      },
+      QUOTE_EXPIRED: {
+        sw: "Nukuu hii imeisha muda wake. Kaunta itatoa mpya.",
+        en: "This quotation has expired. The counter will issue a new one.",
+      },
+      QUOTE_JOB_STATE: {
+        sw: "Kazi hii haisubiri jibu la mteja sasa. Ulize kaunta.",
+        en: "This job is not waiting for a customer answer right now. Ask the counter.",
+      },
+      TRACKING_CLOSED: {
+        sw: "Kazi hii imefungwa kwa majibu ya mteja.",
+        en: "This job is closed to customer answers.",
+      },
+      NO_QUOTATION_YET: {
+        sw: "Hakuna nukuu iliyotolewa bado kwa kazi hii.",
+        en: "No quotation has been issued for this job yet.",
+      },
+      DEVICE_NOT_HANDED_BACK: {
+        sw: "Karakana bado haijarekodi kuukabidhi kifaa huu.",
+        en: "The workshop has not recorded handing this device back.",
+      },
+      TOO_MANY_REQUESTS: {
+        sw: "Majaribio mengi kwa dakika moja. Subiri kidogo kisha ujaribu tena.",
+        en: "Too many tries in one minute. Wait a moment and try again.",
+      },
+    },
+    waAccept: { sw: "Nakubali", en: "I accept" },
+    waDecline: { sw: "Nakataa", en: "I decline" },
+    waQuoteAck: { sw: "Nimeipokea", en: "I have received" },
+    waDeviceAck: { sw: "Nimechukua kifaa changu", en: "I have collected my device" },
+    waQuote: { sw: "nukuu ya", en: "the quotation of" },
+    waJob: { sw: "kwa kazi", en: "for job" },
+    waName: { sw: "Jina", en: "Name" },
     trackFooter: {
       sw: "Taarifa hizi ni nakili kutoka kwenye rekodi za karakana na zisasishwa mara kwa mara — thibitisha mabadiliko makubwa kwa mtu wa kaunta.",
       en: "This is a mirror of the workshop records and is refreshed periodically — confirm big changes at the counter.",
@@ -97,6 +185,9 @@
   var token = null;
   var job = null;
   var badCode = false;
+  var customerName = loadName();
+  /** Answers this page has already landed, keyed by control. The published file lags minutes behind a tap. */
+  var sent = {};
 
   function t(key) {
     var entry = STR[key];
@@ -116,6 +207,20 @@
   function saveLang() {
     try {
       localStorage.setItem(LANG_KEY, lang);
+    } catch (e) {
+      /* ignore */
+    }
+  }
+  function loadName() {
+    try {
+      return String(localStorage.getItem(NAME_KEY) || "");
+    } catch (e) {
+      return "";
+    }
+  }
+  function saveName() {
+    try {
+      localStorage.setItem(NAME_KEY, customerName);
     } catch (e) {
       /* ignore */
     }
@@ -263,6 +368,291 @@
     return box;
   }
 
+  // ---------- the customer's own answers ----------
+  // A customer's words leave this page only for an https address the workshop itself published in
+  // ./catalog.json. Anything else — a plain http LAN address, a half-typed value — is refused here,
+  // because an answer about a price must not travel in the open.
+  function apiBase() {
+    var raw = String(shop.api || "").trim();
+    if (!/^https:\/\/[^\s]+$/i.test(raw)) return null;
+    return raw.replace(/\/+$/, "");
+  }
+
+  /** Resolves with the server's reply; rejects with the one code the customer is told about. */
+  function postAnswer(path, body) {
+    var url = apiBase() + "/store/jobs/" + encodeURIComponent(token) + "/" + path;
+    return fetch(url, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(body),
+    })
+      .then(function (r) {
+        return r.text().then(function (text) {
+          var data = null;
+          try {
+            data = JSON.parse(text);
+          } catch (e) {
+            data = null;
+          }
+          if (r.ok) return data || {};
+          var err = new Error("answer " + (data && data.code ? data.code : r.status));
+          err.answerCode = data && data.code ? String(data.code) : "SEND_FAILED";
+          throw err;
+        });
+      })
+      .catch(function (err) {
+        throw err && err.answerCode ? err.answerCode : "SEND_FAILED";
+      });
+  }
+
+  function errorText(code) {
+    // Only the codes the shop is known to answer with; anything else gets the plain "it did not arrive".
+    if (!Object.prototype.hasOwnProperty.call(STR.errorByCode, code)) return t("sendFailed");
+    var entry = STR.errorByCode[code];
+    return entry[lang] != null ? entry[lang] : entry.sw;
+  }
+
+  function trimmedName() {
+    return String(customerName || "").trim();
+  }
+  // The server refuses a name under two characters; saying so here saves the customer a round trip.
+  function nameOk() {
+    return trimmedName().length >= 2;
+  }
+
+  function waAnswerText(shortLabel) {
+    var parts = [shortLabel, t("waJob") + " " + (job.ref || "")];
+    if (trimmedName()) parts.push(t("waName") + ": " + trimmedName());
+    return parts.join(" — ");
+  }
+
+  /**
+   * The one path an answer takes: check the name, disable the button, then the server's own words on a
+   * refusal. `makeBody` returns the body, or a sentence to show the customer when what they typed is short.
+   */
+  function sendAnswer(id, button, status, path, makeBody) {
+    function show(cls, text) {
+      status.hidden = false;
+      status.className = cls;
+      status.textContent = text;
+    }
+    button.addEventListener("click", function () {
+      if (sent[id]) return;
+      if (!nameOk()) {
+        show("track-error", t("nameMissing"));
+        return;
+      }
+      var body = makeBody();
+      if (typeof body === "string") {
+        show("track-error", body);
+        return;
+      }
+      button.disabled = true;
+      show("track-hint", t("busy"));
+      postAnswer(path, body).then(
+        function () {
+          sent[id] = true;
+          button.disabled = true;
+          show("answer-ok", t("answerSent"));
+        },
+        function (code) {
+          button.disabled = false;
+          show("track-error", errorText(code));
+        },
+      );
+    });
+  }
+
+  function answerButton(label, soft) {
+    var b = el("button", "btn " + (soft ? "btn-soft" : "btn-request"), label);
+    b.type = "button";
+    return b;
+  }
+
+  /** One answer, one row: a button into the shop's API, or a WhatsApp link when there is no API. */
+  function answerRow(id, label, path, makeBody, waShort, soft) {
+    var row = el("div", "answer-row");
+    if (sent[id]) {
+      row.appendChild(el("p", "answer-ok", t("answerAlready")));
+      return row;
+    }
+    if (apiBase()) {
+      var btn = answerButton(label, soft);
+      var status = el("p", "track-hint");
+      status.hidden = true;
+      row.appendChild(btn);
+      row.appendChild(status);
+      sendAnswer(id, btn, status, path, makeBody);
+      return row;
+    }
+    var wa = whatsappUrl(waAnswerText(waShort));
+    if (!wa) {
+      row.appendChild(el("p", "card-note", t("counterNote")));
+      return row;
+    }
+    var a = el("a", "btn " + (soft ? "btn-soft" : "btn-request"), label);
+    a.href = wa;
+    a.target = "_blank";
+    a.rel = "noopener";
+    row.appendChild(a);
+    return row;
+  }
+
+  function nameField() {
+    var field = el("div", "track-field");
+    var label = el("label", null, t("nameLabel"));
+    var input = el("input");
+    label.setAttribute("for", "answerName");
+    input.type = "text";
+    input.id = "answerName";
+    input.name = "name";
+    input.autocomplete = "name";
+    input.value = customerName;
+    input.addEventListener("input", function () {
+      customerName = input.value;
+      saveName();
+    });
+    field.appendChild(label);
+    field.appendChild(input);
+    field.appendChild(el("p", "track-hint", t("nameHint")));
+    return field;
+  }
+
+  function feedbackNode() {
+    var block = el("div", "answer-block");
+    block.appendChild(el("p", "estimate-label", t("feedbackTitle")));
+    if (sent.feedback) {
+      block.appendChild(el("p", "answer-ok", t("answerAlready")));
+      return block;
+    }
+    if (apiBase()) {
+      var rating = el("select");
+      rating.id = "answerRating";
+      var none = el("option", null, t("ratingNone"));
+      none.value = "";
+      rating.appendChild(none);
+      [5, 4, 3, 2, 1].forEach(function (n) {
+        var o = el("option", null, n + "/5");
+        o.value = String(n);
+        rating.appendChild(o);
+      });
+      var words = el("textarea");
+      words.id = "answerWords";
+      words.rows = 3;
+      words.maxLength = 1000;
+      var rLabel = el("label", null, t("feedbackRating"));
+      rLabel.setAttribute("for", "answerRating");
+      var wLabel = el("label", null, t("feedbackMessage"));
+      wLabel.setAttribute("for", "answerWords");
+      var btn = answerButton(t("feedbackSend"), false);
+      var status = el("p", "track-hint");
+      status.hidden = true;
+      block.appendChild(rLabel);
+      block.appendChild(rating);
+      block.appendChild(wLabel);
+      block.appendChild(words);
+      block.appendChild(btn);
+      block.appendChild(status);
+      sendAnswer("feedback", btn, status, "feedback", function () {
+        var message = words.value.trim();
+        if (message.length < 3) return t("feedbackShort");
+        var body = { name: trimmedName(), message: message };
+        var score = toNumber(rating.value);
+        if (score !== null) body.rating = score;
+        return body;
+      });
+      return block;
+    }
+    var wa = whatsappUrl(waAnswerText(t("feedbackTitle")));
+    if (!wa) {
+      block.appendChild(el("p", "card-note", t("counterNote")));
+      return block;
+    }
+    var row = el("div", "answer-row");
+    var a = el("a", "btn btn-request", t("feedbackSend"));
+    a.href = wa;
+    a.target = "_blank";
+    a.rel = "noopener";
+    row.appendChild(a);
+    block.appendChild(row);
+    return block;
+  }
+
+  /**
+   * What a customer may answer is the published state talking, not the button: an accept only stands beside
+   * a quotation that is still issued on a job still waiting for that answer, and a collection only after the
+   * workshop recorded handing the device back. The server checks all of it again — this only avoids offering
+   * a button that is known to be refused.
+   */
+  function answersNode() {
+    var estimate = job.estimate;
+    var canDecide = job.state === "AWAITING_CUSTOMER_APPROVAL" && !!estimate && estimate.status === "ISSUED";
+    var delivered = job.state === "DELIVERED";
+    if (!estimate && !delivered) return null;
+
+    var box = el("div", "card track-card answers-card");
+    box.appendChild(el("h2", "section-title", t("answerTitle")));
+    box.appendChild(el("p", "card-desc", t("answerIntro")));
+    if (!apiBase()) box.appendChild(el("p", "card-note", t("answerOffline")));
+    box.appendChild(nameField());
+    if (estimate) {
+      box.appendChild(
+        answerRow(
+          "quoteAck",
+          t("quoteAck"),
+          "receipt",
+          function () {
+            return { kind: "QUOTE_RECEIVED", name: trimmedName() };
+          },
+          t("waQuoteAck"),
+          true,
+        ),
+      );
+    }
+    if (canDecide) {
+      box.appendChild(
+        answerRow(
+          "accept",
+          t("quoteAccept"),
+          "quote-decision",
+          function () {
+            return { decision: "APPROVED", name: trimmedName() };
+          },
+          t("waAccept"),
+          false,
+        ),
+      );
+      box.appendChild(
+        answerRow(
+          "decline",
+          t("quoteDecline"),
+          "quote-decision",
+          function () {
+            return { decision: "DECLINED", name: trimmedName() };
+          },
+          t("waDecline"),
+          true,
+        ),
+      );
+    }
+    if (delivered) {
+      box.appendChild(
+        answerRow(
+          "deviceAck",
+          t("deviceAck"),
+          "receipt",
+          function () {
+            return { kind: "DEVICE_RECEIVED", name: trimmedName() };
+          },
+          t("waDeviceAck"),
+          false,
+        ),
+      );
+      box.appendChild(feedbackNode());
+    }
+    return box;
+  }
+
   function actionsNode() {
     var box = el("div", "track-actions");
     var msg = t("askMsg") + " " + (job.ref || "") + " " + t("askFrom");
@@ -311,6 +701,8 @@
 
     var tl = timelineNode();
     if (tl) host.appendChild(tl);
+    var answers = answersNode();
+    if (answers) host.appendChild(answers);
     host.appendChild(actionsNode());
   }
 
@@ -396,6 +788,8 @@
     token = next;
     job = null;
     badCode = false;
+    // A new link is a new job: an answer sent on the old one must not silence a button on this one.
+    sent = {};
     var err = document.getElementById("codeError");
     err.hidden = true;
     err.textContent = "";

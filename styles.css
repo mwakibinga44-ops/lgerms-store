@@ -40,7 +40,9 @@ body {
 }
 
 button,
-input {
+input,
+select,
+textarea {
   font: inherit;
   color: inherit;
 }
@@ -791,6 +793,69 @@ a {
 .track-error {
   color: var(--danger);
   font-weight: 600;
+}
+
+/* ---------- Customer answers on the tracking page ---------- */
+.answers-card {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* .track-field is built to stretch inside the code form; inside a card it just stacks. */
+.answers-card .track-field {
+  flex: none;
+}
+
+.answer-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+}
+
+.answer-block {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding-top: 12px;
+  border-top: 1px solid var(--line);
+}
+
+.btn:disabled {
+  opacity: 0.55;
+  cursor: default;
+}
+
+.btn-soft {
+  background: #e8eef7;
+  color: var(--ink);
+}
+
+.btn-soft:active {
+  background: var(--line);
+}
+
+.answer-ok {
+  color: var(--ok);
+  font-weight: 600;
+}
+
+textarea {
+  padding: 11px 14px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--panel);
+  min-height: 76px;
+  resize: vertical;
+}
+
+select {
+  align-self: flex-start;
+  padding: 10px 12px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--panel);
 }
 
 .track-back {
