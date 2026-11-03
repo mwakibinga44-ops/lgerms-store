@@ -1,12 +1,12 @@
 {
   "code": "b26afae0-e490-4492-9e74-1c5ad026cf92",
   "ref": "JB-000109",
-  "state": "IN_REPAIR",
-  "stateSw": "Inatengenezwa",
-  "stateEn": "In repair",
+  "state": "READY_FOR_COLLECTION",
+  "stateSw": "Tayari kuchukuliwa",
+  "stateEn": "Ready for collection",
   "receivedAt": "2026-11-03T14:13:05.045Z",
   "deliveredAt": null,
-  "updatedAt": "2026-11-03T14:25:17.547Z",
+  "updatedAt": "2026-11-03T14:28:29.328Z",
   "device": {
     "categoryEn": "Televisions",
     "categorySw": "Televisheni",
@@ -44,8 +44,32 @@
       "stateSw": "Inatengenezwa",
       "stateEn": "In repair",
       "at": "2026-11-03T14:25:17.553Z"
+    },
+    {
+      "state": "TESTING",
+      "stateSw": "Upimaji",
+      "stateEn": "Testing",
+      "at": "2026-11-03T14:26:39.873Z"
+    },
+    {
+      "state": "QUALITY_CONTROL",
+      "stateSw": "Udhibiti wa ubora",
+      "stateEn": "Quality control",
+      "at": "2026-11-03T14:27:12.818Z"
+    },
+    {
+      "state": "COMPLETED",
+      "stateSw": "Imekamilika",
+      "stateEn": "Completed",
+      "at": "2026-11-03T14:27:56.311Z"
+    },
+    {
+      "state": "READY_FOR_COLLECTION",
+      "stateSw": "Tayari kuchukuliwa",
+      "stateEn": "Ready for collection",
+      "at": "2026-11-03T14:28:29.331Z"
     }
   ],
   "currency": "TZS",
-  "generatedAt": "2026-11-03T14:26:34.912Z"
+  "generatedAt": "2026-11-03T14:56:34.451Z"
 }
