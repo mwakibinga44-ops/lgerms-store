@@ -9,8 +9,19 @@
     "api": ""
   },
   "currency": "TZS",
-  "generatedAt": "2026-11-04T20:26:35.004Z",
+  "generatedAt": "2026-11-04T20:56:33.815Z",
   "items": [
+    {
+      "id": "01a1a843-4592-701c-8c3d-206bd6490137",
+      "sku": "CHAJA200",
+      "name": "iaccess chaja",
+      "description": null,
+      "unit": "PCS",
+      "price": null,
+      "listPrice": null,
+      "priceDate": null,
+      "available": 0
+    },
     {
       "id": "01a1a099-6207-76d9-9c94-ea8df036c4e0",
       "sku": "SCR-IP14",
