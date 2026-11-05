@@ -1,0 +1,58 @@
+{
+  "code": "1dd1b73f-dd3f-4c44-b8e2-7387e9c857ab",
+  "ref": "JB-000115",
+  "state": "AWAITING_CUSTOMER_APPROVAL",
+  "stateSw": "Kusubiri idhini ya mteja",
+  "stateEn": "Awaiting customer approval",
+  "receivedAt": "2026-11-04T22:32:32.903Z",
+  "deliveredAt": null,
+  "updatedAt": "2026-11-04T22:34:59.252Z",
+  "device": {
+    "categoryEn": "Phones",
+    "categorySw": "Simu",
+    "brand": null,
+    "model": "spark 3"
+  },
+  "estimate": {
+    "status": "APPROVED",
+    "currency": "TZS",
+    "total": "2000",
+    "validUntil": "2026-11-05T22:59:05.719Z",
+    "issuedAt": "2026-11-04T22:59:05.719Z"
+  },
+  "answers": {
+    "decision": "APPROVED",
+    "decidedAt": "2026-11-04T22:59:39.560Z",
+    "decidedOnline": false,
+    "decidedOnCurrentQuote": true,
+    "quoteAckAt": "2026-11-04T23:02:02.697Z",
+    "quoteAckByCounter": true,
+    "deviceAckAt": null,
+    "deviceAckByCounter": false,
+    "feedbackAt": null,
+    "feedbackByCounter": false,
+    "opinions": 0
+  },
+  "timeline": [
+    {
+      "state": "RECEIVED",
+      "stateSw": "Imepokelewa",
+      "stateEn": "Received",
+      "at": "2026-11-04T22:32:32.906Z"
+    },
+    {
+      "state": "AWAITING_QUOTATION",
+      "stateSw": "Kukadiria bei",
+      "stateEn": "Preparing quotation",
+      "at": "2026-11-04T22:32:32.955Z"
+    },
+    {
+      "state": "AWAITING_CUSTOMER_APPROVAL",
+      "stateSw": "Kusubiri idhini ya mteja",
+      "stateEn": "Awaiting customer approval",
+      "at": "2026-11-04T22:34:59.254Z"
+    }
+  ],
+  "currency": "TZS",
+  "generatedAt": "2026-11-05T09:26:37.982Z"
+}

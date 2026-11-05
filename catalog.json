@@ -9,7 +9,7 @@
     "api": ""
   },
   "currency": "TZS",
-  "generatedAt": "2026-11-04T21:58:31.950Z",
+  "generatedAt": "2026-11-05T09:26:37.611Z",
   "items": [
     {
       "id": "01a1a843-4592-701c-8c3d-206bd6490137",
@@ -32,6 +32,17 @@
       "listPrice": null,
       "priceDate": null,
       "available": 0
+    },
+    {
+      "id": "01a1a8b6-c363-7508-a95d-01da394b8b26",
+      "sku": "CHPT21000",
+      "name": "tundu la kuchajia",
+      "description": null,
+      "unit": "PCS",
+      "price": null,
+      "listPrice": null,
+      "priceDate": null,
+      "available": 300
     }
   ],
   "handouts": [
