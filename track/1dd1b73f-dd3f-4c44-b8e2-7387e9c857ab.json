@@ -1,12 +1,12 @@
 {
   "code": "1dd1b73f-dd3f-4c44-b8e2-7387e9c857ab",
   "ref": "JB-000115",
-  "state": "AWAITING_CUSTOMER_APPROVAL",
-  "stateSw": "Kusubiri idhini ya mteja",
-  "stateEn": "Awaiting customer approval",
+  "state": "READY_FOR_COLLECTION",
+  "stateSw": "Tayari kuchukuliwa",
+  "stateEn": "Ready for collection",
   "receivedAt": "2026-11-04T22:32:32.903Z",
   "deliveredAt": null,
-  "updatedAt": "2026-11-04T22:34:59.252Z",
+  "updatedAt": "2026-11-05T23:07:57.609Z",
   "device": {
     "categoryEn": "Phones",
     "categorySw": "Simu",
@@ -51,8 +51,44 @@
       "stateSw": "Kusubiri idhini ya mteja",
       "stateEn": "Awaiting customer approval",
       "at": "2026-11-04T22:34:59.254Z"
+    },
+    {
+      "state": "WAITING_FOR_PARTS",
+      "stateSw": "Kusubiri vipuri",
+      "stateEn": "Waiting for parts",
+      "at": "2026-11-05T22:56:48.717Z"
+    },
+    {
+      "state": "IN_REPAIR",
+      "stateSw": "Inatengenezwa",
+      "stateEn": "In repair",
+      "at": "2026-11-05T22:57:37.580Z"
+    },
+    {
+      "state": "TESTING",
+      "stateSw": "Upimaji",
+      "stateEn": "Testing",
+      "at": "2026-11-05T23:00:17.626Z"
+    },
+    {
+      "state": "QUALITY_CONTROL",
+      "stateSw": "Udhibiti wa ubora",
+      "stateEn": "Quality control",
+      "at": "2026-11-05T23:01:37.370Z"
+    },
+    {
+      "state": "COMPLETED",
+      "stateSw": "Imekamilika",
+      "stateEn": "Completed",
+      "at": "2026-11-05T23:07:48.133Z"
+    },
+    {
+      "state": "READY_FOR_COLLECTION",
+      "stateSw": "Tayari kuchukuliwa",
+      "stateEn": "Ready for collection",
+      "at": "2026-11-05T23:07:57.616Z"
     }
   ],
   "currency": "TZS",
-  "generatedAt": "2026-11-05T22:56:34.777Z"
+  "generatedAt": "2026-11-05T23:26:36.078Z"
 }
