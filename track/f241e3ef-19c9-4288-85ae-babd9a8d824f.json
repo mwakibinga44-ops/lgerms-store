@@ -1,12 +1,12 @@
 {
   "code": "f241e3ef-19c9-4288-85ae-babd9a8d824f",
   "ref": "JB-000116",
-  "state": "IN_REPAIR",
-  "stateSw": "Inatengenezwa",
-  "stateEn": "In repair",
+  "state": "DELIVERED",
+  "stateSw": "Imekabidhiwa",
+  "stateEn": "Delivered",
   "receivedAt": "2026-11-05T09:50:38.417Z",
-  "deliveredAt": null,
-  "updatedAt": "2026-11-05T22:25:56.358Z",
+  "deliveredAt": "2026-11-05T22:46:53.862Z",
+  "updatedAt": "2026-11-05T22:46:53.863Z",
   "device": {
     "categoryEn": "Phones",
     "categorySw": "Simu",
@@ -63,8 +63,38 @@
       "stateSw": "Inatengenezwa",
       "stateEn": "In repair",
       "at": "2026-11-05T22:25:56.366Z"
+    },
+    {
+      "state": "TESTING",
+      "stateSw": "Upimaji",
+      "stateEn": "Testing",
+      "at": "2026-11-05T22:31:50.123Z"
+    },
+    {
+      "state": "QUALITY_CONTROL",
+      "stateSw": "Udhibiti wa ubora",
+      "stateEn": "Quality control",
+      "at": "2026-11-05T22:37:59.052Z"
+    },
+    {
+      "state": "COMPLETED",
+      "stateSw": "Imekamilika",
+      "stateEn": "Completed",
+      "at": "2026-11-05T22:40:15.798Z"
+    },
+    {
+      "state": "READY_FOR_COLLECTION",
+      "stateSw": "Tayari kuchukuliwa",
+      "stateEn": "Ready for collection",
+      "at": "2026-11-05T22:43:24.905Z"
+    },
+    {
+      "state": "DELIVERED",
+      "stateSw": "Imekabidhiwa",
+      "stateEn": "Delivered",
+      "at": "2026-11-05T22:46:53.864Z"
     }
   ],
   "currency": "TZS",
-  "generatedAt": "2026-11-05T22:26:33.620Z"
+  "generatedAt": "2026-11-05T22:56:34.777Z"
 }
