@@ -9,7 +9,7 @@
     "api": ""
   },
   "currency": "TZS",
-  "generatedAt": "2026-11-05T11:26:33.665Z",
+  "generatedAt": "2026-11-05T17:26:34.304Z",
   "items": [
     {
       "id": "01a1ab28-1dcd-7519-9e61-897523dc2476",
@@ -20,7 +20,7 @@
       "price": null,
       "listPrice": null,
       "priceDate": null,
-      "available": 200
+      "available": 199
     },
     {
       "id": "01a1a843-4592-701c-8c3d-206bd6490137",
@@ -53,7 +53,7 @@
       "price": null,
       "listPrice": null,
       "priceDate": null,
-      "available": 600
+      "available": 599
     }
   ],
   "handouts": [

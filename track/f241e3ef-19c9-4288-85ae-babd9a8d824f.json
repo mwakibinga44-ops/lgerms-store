@@ -16,17 +16,17 @@
   "estimate": {
     "status": "APPROVED",
     "currency": "TZS",
-    "total": "5000",
-    "validUntil": "2026-11-12T09:56:02.757Z",
-    "issuedAt": "2026-11-05T09:56:02.757Z"
+    "total": "2000",
+    "validUntil": "2026-11-12T11:28:59.321Z",
+    "issuedAt": "2026-11-05T11:28:59.321Z"
   },
   "answers": {
     "decision": "APPROVED",
-    "decidedAt": "2026-11-05T10:03:48.317Z",
+    "decidedAt": "2026-11-05T11:29:03.875Z",
     "decidedOnline": false,
     "decidedOnCurrentQuote": true,
-    "quoteAckAt": "2026-11-05T10:03:42.771Z",
-    "quoteAckByCounter": true,
+    "quoteAckAt": null,
+    "quoteAckByCounter": false,
     "deviceAckAt": null,
     "deviceAckByCounter": false,
     "feedbackAt": null,
@@ -54,5 +54,5 @@
     }
   ],
   "currency": "TZS",
-  "generatedAt": "2026-11-05T11:26:33.708Z"
+  "generatedAt": "2026-11-05T17:26:34.366Z"
 }
