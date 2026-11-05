@@ -1,0 +1,58 @@
+{
+  "code": "f241e3ef-19c9-4288-85ae-babd9a8d824f",
+  "ref": "JB-000116",
+  "state": "AWAITING_CUSTOMER_APPROVAL",
+  "stateSw": "Kusubiri idhini ya mteja",
+  "stateEn": "Awaiting customer approval",
+  "receivedAt": "2026-11-05T09:50:38.417Z",
+  "deliveredAt": null,
+  "updatedAt": "2026-11-05T10:13:33.886Z",
+  "device": {
+    "categoryEn": "Phones",
+    "categorySw": "Simu",
+    "brand": null,
+    "model": "TECHNOT332"
+  },
+  "estimate": {
+    "status": "APPROVED",
+    "currency": "TZS",
+    "total": "5000",
+    "validUntil": "2026-11-12T09:56:02.757Z",
+    "issuedAt": "2026-11-05T09:56:02.757Z"
+  },
+  "answers": {
+    "decision": "APPROVED",
+    "decidedAt": "2026-11-05T10:03:48.317Z",
+    "decidedOnline": false,
+    "decidedOnCurrentQuote": true,
+    "quoteAckAt": "2026-11-05T10:03:42.771Z",
+    "quoteAckByCounter": true,
+    "deviceAckAt": null,
+    "deviceAckByCounter": false,
+    "feedbackAt": null,
+    "feedbackByCounter": false,
+    "opinions": 0
+  },
+  "timeline": [
+    {
+      "state": "RECEIVED",
+      "stateSw": "Imepokelewa",
+      "stateEn": "Received",
+      "at": "2026-11-05T09:50:38.420Z"
+    },
+    {
+      "state": "AWAITING_QUOTATION",
+      "stateSw": "Kukadiria bei",
+      "stateEn": "Preparing quotation",
+      "at": "2026-11-05T09:50:38.460Z"
+    },
+    {
+      "state": "AWAITING_CUSTOMER_APPROVAL",
+      "stateSw": "Kusubiri idhini ya mteja",
+      "stateEn": "Awaiting customer approval",
+      "at": "2026-11-05T09:56:16.292Z"
+    }
+  ],
+  "currency": "TZS",
+  "generatedAt": "2026-11-05T10:56:33.802Z"
+}

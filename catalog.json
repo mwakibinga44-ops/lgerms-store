@@ -9,8 +9,19 @@
     "api": ""
   },
   "currency": "TZS",
-  "generatedAt": "2026-11-05T09:26:37.611Z",
+  "generatedAt": "2026-11-05T10:56:33.725Z",
   "items": [
+    {
+      "id": "01a1ab28-1dcd-7519-9e61-897523dc2476",
+      "sku": "EAP200",
+      "name": "EARPICE",
+      "description": null,
+      "unit": "PCS",
+      "price": null,
+      "listPrice": null,
+      "priceDate": null,
+      "available": 200
+    },
     {
       "id": "01a1a843-4592-701c-8c3d-206bd6490137",
       "sku": "CHAJA200",
@@ -42,7 +53,7 @@
       "price": null,
       "listPrice": null,
       "priceDate": null,
-      "available": 300
+      "available": 600
     }
   ],
   "handouts": [
