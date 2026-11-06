@@ -9,7 +9,7 @@
     "api": ""
   },
   "currency": "TZS",
-  "generatedAt": "2026-11-06T21:36:33.527Z",
+  "generatedAt": "2026-11-06T22:06:32.498Z",
   "items": [
     {
       "id": "01a1ab28-1dcd-7519-9e61-897523dc2476",
@@ -32,6 +32,17 @@
       "listPrice": null,
       "priceDate": null,
       "available": 0
+    },
+    {
+      "id": "01a1b2d5-51a4-7279-8855-b98105c7dac6",
+      "sku": "IPH6234",
+      "name": "IPHONE 6PLUS LCD",
+      "description": null,
+      "unit": "PCS",
+      "price": null,
+      "listPrice": null,
+      "priceDate": null,
+      "available": 9
     },
     {
       "id": "01a1a099-6207-76d9-9c94-ea8df036c4e0",
