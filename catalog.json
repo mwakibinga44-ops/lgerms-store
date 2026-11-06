@@ -9,7 +9,7 @@
     "api": ""
   },
   "currency": "TZS",
-  "generatedAt": "2026-11-06T22:06:32.498Z",
+  "generatedAt": "2026-11-06T22:36:32.510Z",
   "items": [
     {
       "id": "01a1ab28-1dcd-7519-9e61-897523dc2476",
@@ -26,6 +26,17 @@
       "id": "01a1a843-4592-701c-8c3d-206bd6490137",
       "sku": "CHAJA200",
       "name": "iaccess chaja",
+      "description": null,
+      "unit": "PCS",
+      "price": null,
+      "listPrice": null,
+      "priceDate": null,
+      "available": 0
+    },
+    {
+      "id": "01a1b2f9-b13a-710c-9678-26726d5966a2",
+      "sku": "IPH601",
+      "name": "iph 6 plus protector",
       "description": null,
       "unit": "PCS",
       "price": null,
