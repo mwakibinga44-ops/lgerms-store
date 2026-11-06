@@ -13,13 +13,7 @@
     "brand": null,
     "model": "HP BATTERY- BMS"
   },
-  "estimate": {
-    "status": "APPROVED",
-    "currency": "TZS",
-    "total": "50000",
-    "validUntil": "2026-11-05T03:15:16.557Z",
-    "issuedAt": "2026-11-02T03:15:16.557Z"
-  },
+  "estimate": null,
   "answers": {
     "decision": "APPROVED",
     "decidedAt": "2026-11-02T03:16:04.257Z",
@@ -66,5 +60,5 @@
     }
   ],
   "currency": "TZS",
-  "generatedAt": "2026-11-06T01:26:37.944Z"
+  "generatedAt": "2026-11-06T05:56:33.923Z"
 }

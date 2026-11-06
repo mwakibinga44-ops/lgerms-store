@@ -697,8 +697,13 @@
     var box = el("div", "card track-card answers-card");
     box.appendChild(el("h2", "section-title", t("answerTitle")));
     box.appendChild(el("p", "card-desc", t("answerIntro")));
-    if (!apiBase()) box.appendChild(el("p", "card-note", t("answerOffline")));
-    if (apiBase()) box.appendChild(nameField());
+    if (apiBase()) {
+      box.appendChild(nameField());
+    } else {
+      // Nothing typed here reaches the workshop by itself, so the name box is not offered: on this path the
+      // shop hears the answer only when the counter writes it down.
+      box.appendChild(el("p", "card-note", t("answerOffline")));
+    }
     if (estimate) {
       box.appendChild(
         answerRow(
@@ -759,8 +764,9 @@
 
   function actionsNode() {
     var box = el("div", "track-actions");
-    // The question carries the same token link the answer buttons do: the shop needs to know which job is
-    // asking, and the sequential job number is not a secret but a pointer into a list it keeps on customers.
+    // The question carries the same token link the answer buttons do. The job number would say less, not more:
+    // it runs in sequence, so a chat log holding it and a name would tell anybody reading it who has work
+    // here, while the link points the counter at one job without naming the person standing at it.
     var msg = waAnswerText(t("askMsg"));
     var wa = whatsappUrl(msg);
     var tel = telUrl();

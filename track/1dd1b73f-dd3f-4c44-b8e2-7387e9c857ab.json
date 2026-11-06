@@ -13,13 +13,7 @@
     "brand": null,
     "model": "spark 3"
   },
-  "estimate": {
-    "status": "APPROVED",
-    "currency": "TZS",
-    "total": "2000",
-    "validUntil": "2026-11-05T22:59:05.719Z",
-    "issuedAt": "2026-11-04T22:59:05.719Z"
-  },
+  "estimate": null,
   "answers": {
     "decision": "APPROVED",
     "decidedAt": "2026-11-04T22:59:39.560Z",
@@ -90,5 +84,5 @@
     }
   ],
   "currency": "TZS",
-  "generatedAt": "2026-11-06T01:26:37.944Z"
+  "generatedAt": "2026-11-06T05:56:33.923Z"
 }
