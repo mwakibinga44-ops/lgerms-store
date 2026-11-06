@@ -1,0 +1,46 @@
+{
+  "code": "1ea9a34b-0f9a-4ac2-8e62-ef76f6086ebe",
+  "ref": "JB-000117",
+  "state": "AWAITING_QUOTATION",
+  "stateSw": "Kukadiria bei",
+  "stateEn": "Preparing quotation",
+  "receivedAt": "2026-11-06T21:30:52.042Z",
+  "deliveredAt": null,
+  "updatedAt": "2026-11-06T21:30:52.082Z",
+  "device": {
+    "categoryEn": "Phones",
+    "categorySw": "Simu",
+    "brand": null,
+    "model": "iphone 6 plus"
+  },
+  "estimate": null,
+  "answers": {
+    "decision": null,
+    "decidedAt": null,
+    "decidedOnline": false,
+    "decidedOnCurrentQuote": false,
+    "quoteAckAt": null,
+    "quoteAckByCounter": false,
+    "deviceAckAt": null,
+    "deviceAckByCounter": false,
+    "feedbackAt": null,
+    "feedbackByCounter": false,
+    "opinions": 0
+  },
+  "timeline": [
+    {
+      "state": "RECEIVED",
+      "stateSw": "Imepokelewa",
+      "stateEn": "Received",
+      "at": "2026-11-06T21:30:52.045Z"
+    },
+    {
+      "state": "AWAITING_QUOTATION",
+      "stateSw": "Kukadiria bei",
+      "stateEn": "Preparing quotation",
+      "at": "2026-11-06T21:30:52.084Z"
+    }
+  ],
+  "currency": "TZS",
+  "generatedAt": "2026-11-06T21:36:33.577Z"
+}
