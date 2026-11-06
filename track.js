@@ -340,6 +340,16 @@
     if (!digits) return null;
     return "https://wa.me/" + digits + "?text=" + encodeURIComponent(text);
   }
+  /**
+   * The address this page was opened with, token and all. When a message about a job has to leave the page it
+   * carries this and nothing else: the job number runs in sequence, and a WhatsApp chat log is not the
+   * workshop's to protect. The counter opens the link and reads the job off it, which is what the paper slip
+   * does for them too.
+   */
+  function ownLink() {
+    var base = String(window.location.href || "").split("#")[0].split("?")[0];
+    return token ? base + "?t=" + encodeURIComponent(token) : base;
+  }
   function telUrl() {
     var phone = String(shop.phone || "").replace(/[^\d+]/g, "");
     if (!/[0-9]/.test(phone)) return null;
