@@ -62,15 +62,14 @@
       en: "No quote has been issued yet. The counter will tell you after the inspection.",
     },
     estimateClosed: {
-      sw: "Kadirio hili la bei limekwisha. Kaunta itakujulisha kuhusu hatua inayofuata.",
-      en: "This quotation is closed. The counter will tell you what happens next.",
+      sw: "Umeshalijibu kadirio hili la bei, kwa hivyo bei yake haipo hapa tena. Uliza kaunta bei ya mwisho na jinsi ya kulipa.",
+      en: "You have answered this quotation, so its price is no longer shown here. Ask the counter for the final cost and how to pay.",
     },
     askTitle: { sw: "Uliza kuhusu kazi hii", en: "Ask about this job" },
     askMsg: {
-      sw: "Swali kuhusu kazi ya ukarabati namba",
-      en: "A question about repair job",
+      sw: "Swali kuhusu kazi hii ya ukarabati",
+      en: "A question about this repair job",
     },
-    askFrom: { sw: "kutoka ukurasa wa kufuatilia.", en: "from the tracking page." },
     viaPhone: { sw: "Piga simu", en: "Call the shop" },
     counterNote: {
       sw: "Hakuna nambari ya WhatsApp au simu iliyowekwa — tafadhali ulize kwenye kaunta.",
@@ -199,8 +198,6 @@
     waDecline: { sw: "Nakataa", en: "I decline" },
     waQuoteAck: { sw: "Nimepokea kadirio", en: "I have received the quotation" },
     waDeviceAck: { sw: "Nimechukua kifaa changu", en: "I have collected my device" },
-    waJob: { sw: "kwa kazi", en: "for job" },
-    waName: { sw: "Jina", en: "Name" },
     trackFooter: {
       sw: "Taarifa hizi ni nakili kutoka kwenye rekodi za karakana na zisasishwa mara kwa mara — thibitisha mabadiliko makubwa kwa mtu wa kaunta.",
       en: "This is a mirror of the workshop records and is refreshed periodically — confirm big changes at the counter.",
@@ -218,8 +215,6 @@
   var sent = {};
   /** Words typed into the opinion box, kept across a refresh so a poll never throws them away. */
   var draftWords = "";
-  /** WhatsApp links on screen, rebuilt whenever the name changes: a typed name must reach the shop's message. */
-  var waRows = [];
   var pollTimer = null;
 
   function t(key) {
@@ -379,12 +374,19 @@
   }
 
   function estimateNode() {
+    var answered = job.answers && job.answers.decision;
+    // The feed already withholds the price of a quotation the customer answered; this says the same thing to
+    // a browser holding an older copy of that file, so the number cannot outlive the answer by one refresh.
+    if (answered && job.answers.decidedOnCurrentQuote) {
+      var closed = el("div", "estimate");
+      closed.appendChild(el("p", "estimate-note", t("estimateClosed")));
+      return closed;
+    }
     var e = job.estimate;
     if (!e) {
       var none = el("div", "estimate");
-      // A quotation the customer already answered is no longer the open one, so it leaves the estimate box.
-      // Saying "nothing was quoted" over their own decision would deny them what they told the shop.
-      var answered = job.answers && job.answers.decision;
+      // Saying "nothing was quoted" over their own decision would deny them what they told the shop, so the
+      // closed wording is used from the answer alone — the feed drops the price exactly when it is answered.
       none.appendChild(el("p", "estimate-note", t(answered ? "estimateClosed" : "noEstimate")));
       return none;
     }
@@ -472,16 +474,10 @@
   }
 
   function waAnswerText(shortLabel) {
-    var parts = [shortLabel, t("waJob") + " " + (job.ref || "")];
-    if (trimmedName()) parts.push(t("waName") + ": " + trimmedName());
-    return parts.join(" — ");
-  }
-
-  function refreshWaLinks() {
-    waRows.forEach(function (row) {
-      var url = whatsappUrl(waAnswerText(row.short));
-      if (url) row.a.href = url;
-    });
+    // Neither the job number nor the name the customer typed rides in the message. The link says which job
+    // without telling anybody else that this person has work in this workshop, and the counter opening it
+    // reads the reference off the same page the customer is looking at.
+    return [shortLabel, ownLink()].join(" — ");
   }
 
   /**
@@ -569,7 +565,6 @@
     a.href = wa;
     a.target = "_blank";
     a.rel = "noopener";
-    waRows.push({ a: a, short: waShort });
     row.appendChild(a);
     return row;
   }
@@ -587,7 +582,6 @@
     input.addEventListener("input", function () {
       customerName = input.value;
       saveName();
-      refreshWaLinks();
     });
     field.appendChild(label);
     field.appendChild(input);
@@ -695,8 +689,6 @@
    * a button that is known to be refused.
    */
   function answersNode() {
-    // Every render builds its own links; the ones from the last render are off the page.
-    waRows = [];
     var estimate = job.estimate;
     var canDecide = job.state === "AWAITING_CUSTOMER_APPROVAL" && !!estimate && estimate.status === "ISSUED";
     var delivered = job.state === "DELIVERED";
@@ -706,7 +698,7 @@
     box.appendChild(el("h2", "section-title", t("answerTitle")));
     box.appendChild(el("p", "card-desc", t("answerIntro")));
     if (!apiBase()) box.appendChild(el("p", "card-note", t("answerOffline")));
-    box.appendChild(nameField());
+    if (apiBase()) box.appendChild(nameField());
     if (estimate) {
       box.appendChild(
         answerRow(
@@ -767,7 +759,9 @@
 
   function actionsNode() {
     var box = el("div", "track-actions");
-    var msg = t("askMsg") + " " + (job.ref || "") + " " + t("askFrom");
+    // The question carries the same token link the answer buttons do: the shop needs to know which job is
+    // asking, and the sequential job number is not a secret but a pointer into a list it keeps on customers.
+    var msg = waAnswerText(t("askMsg"));
     var wa = whatsappUrl(msg);
     var tel = telUrl();
     if (wa || tel) {
