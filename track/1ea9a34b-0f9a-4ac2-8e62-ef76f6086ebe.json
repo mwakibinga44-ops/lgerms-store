@@ -1,12 +1,12 @@
 {
   "code": "1ea9a34b-0f9a-4ac2-8e62-ef76f6086ebe",
   "ref": "JB-000117",
-  "state": "TESTING",
-  "stateSw": "Upimaji",
-  "stateEn": "Testing",
+  "state": "QUALITY_CONTROL",
+  "stateSw": "Udhibiti wa ubora",
+  "stateEn": "Quality control",
   "receivedAt": "2026-11-06T21:30:52.042Z",
   "deliveredAt": null,
-  "updatedAt": "2026-11-06T22:04:09.170Z",
+  "updatedAt": "2026-11-09T22:53:27.413Z",
   "device": {
     "categoryEn": "Phones",
     "categorySw": "Simu",
@@ -63,8 +63,14 @@
       "stateSw": "Upimaji",
       "stateEn": "Testing",
       "at": "2026-11-06T22:04:09.171Z"
+    },
+    {
+      "state": "QUALITY_CONTROL",
+      "stateSw": "Udhibiti wa ubora",
+      "stateEn": "Quality control",
+      "at": "2026-11-09T22:53:27.427Z"
     }
   ],
   "currency": "TZS",
-  "generatedAt": "2026-11-09T22:36:33.049Z"
+  "generatedAt": "2026-11-09T23:06:32.233Z"
 }
